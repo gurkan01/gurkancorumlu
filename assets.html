@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gürkan Çorumlu - Tüm 3D Varlık Paketleri. Fab ve Unity Asset Store için optimize edilmiş 3D Modeller ve Animasyonlar.">
+    <meta name="author" content="Gürkan Çorumlu">
+    <title>Tüm Paketler | Gürkan Çorumlu 3D Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800;900&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Fog/Mist Canvas Background -->
+    <canvas id="fog-canvas"></canvas>
+
+    <!-- Header / Navigation -->
+    <header class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">GÜRKAN ÇORUMLU</a>
+            
+            <nav class="nav-links">
+                <a href="index.html">
+                    <span class="tr-text">Ana Sayfa</span>
+                    <span class="en-text">Home</span>
+                </a>
+                <a href="index.html#expertise">
+                    <span class="tr-text">Uzmanlık</span>
+                    <span class="en-text">Expertise</span>
+                </a>
+                <a href="#" class="active">
+                    <span class="tr-text">Mağaza Varlıkları</span>
+                    <span class="en-text">Store Assets</span>
+                </a>
+                <a href="index.html#journey">
+                    <span class="tr-text">Deneyim</span>
+                    <span class="en-text">Journey</span>
+                </a>
+                <a href="index.html#contact">
+                    <span class="tr-text">İletişim</span>
+                    <span class="en-text">Contact</span>
+                </a>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="lang-selector">
+                    <button class="lang-btn active" data-lang="tr">TR</button>
+                    <span class="lang-separator">|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                
+                <a href="index.html#contact" class="btn btn-outline cv-btn tr-text">İletişime Geç</a>
+                <a href="index.html#contact" class="btn btn-outline cv-btn en-text">Get in Touch</a>
+                
+                <button class="mobile-toggle" aria-label="Menüyü Aç/Kapat">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer">
+        <button class="mobile-close" aria-label="Menüyü Kapat"><i class="fa-solid fa-xmark"></i></button>
+        <div class="lang-selector-mobile">
+            <button class="lang-btn active" data-lang="tr">TR</button>
+            <span class="lang-separator">|</span>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <nav class="drawer-links">
+            <a href="index.html">
+                <span class="tr-text">Ana Sayfa</span>
+                <span class="en-text">Home</span>
+            </a>
+            <a href="index.html#expertise">
+                <span class="tr-text">Uzmanlık</span>
+                <span class="en-text">Expertise</span>
+            </a>
+            <a href="#">
+                <span class="tr-text">Mağaza Varlıkları</span>
+                <span class="en-text">Store Assets</span>
+            </a>
+            <a href="index.html#journey">
+                <span class="tr-text">Deneyim</span>
+                <span class="en-text">Journey</span>
+            </a>
+            <a href="index.html#contact">
+                <span class="tr-text">İletişim</span>
+                <span class="en-text">Contact</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="section-padding" style="padding-top: 150px;">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-number">02</span>
+                <h1 class="section-title tr-text">TÜM VARLIK PAKETLERİ</h1>
+                <h1 class="section-title en-text">ALL ASSET PACKS</h1>
+                <div class="section-divider"></div>
+            </div>
+
+            <!-- Filters -->
+            <div class="assets-filters-container">
+                <button class="filter-btn active" data-filter="all">
+                    <span class="tr-text">HEPSİ</span>
+                    <span class="en-text">ALL</span>
+                </button>
+                <button class="filter-btn" data-filter="modeling">
+                    <span class="tr-text">MODELLEME / UV</span>
+                    <span class="en-text">MODELING & UV</span>
+                </button>
+                <button class="filter-btn" data-filter="rigging">
+                    <span class="tr-text">RİG & SKİN</span>
+                    <span class="en-text">RIG & SKIN</span>
+                </button>
+                <button class="filter-btn" data-filter="animation">
+                    <span class="tr-text">ANİMASYON</span>
+                    <span class="en-text">ANIMATION</span>
+                </button>
+            </div>
+
+            <!-- Assets Grid -->
+            <div class="projects-grid" id="assets-grid-container">
+                <!-- Dynamically Rendered by Javascript -->
+            </div>
+            
+            <div class="back-home-container text-center" style="margin-top: 60px;">
+                <a href="index.html" class="btn btn-secondary">
+                    <span class="tr-text"><i class="fa-solid fa-house"></i> Ana Sayfaya Dön</span>
+                    <span class="en-text"><i class="fa-solid fa-house"></i> Back to Home</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">GÜRKAN ÇORUMLU</div>
+            <p class="footer-copy">
+                &copy; 2026 Gürkan Çorumlu. <span class="tr-text">Tüm hakları saklıdır.</span><span class="en-text">All rights reserved.</span>
+            </p>
+            <p class="footer-host tr-text">
+                Bu web sitesi <a href="https://www.digitalocean.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-digitalocean"></i> DigitalOcean</a> üzerinde barındırılmaktadır.
+            </p>
+            <p class="footer-host en-text">
+                This website is hosted on <a href="https://www.digitalocean.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-digitalocean"></i> DigitalOcean</a>.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="db.js"></script>
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const gridContainer = document.getElementById('assets-grid-container');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+
+            const renderAssets = (categoryFilter = 'all') => {
+                gridContainer.innerHTML = '';
+                
+                // If filter is rigging, we will search for category === 'rigging', if animation then 'animation'
+                const filtered = categoryFilter === 'all'
+                    ? assetsData
+                    : assetsData.filter(a => a.category === categoryFilter);
+
+                if (filtered.length === 0) {
+                    gridContainer.innerHTML = `
+                        <div class="no-assets tr-text" style="grid-column: span 3; text-align: center; color: var(--text-muted); padding: 40px 0;">Bu kategoride henüz varlık bulunmamaktadır.</div>
+                        <div class="no-assets en-text" style="grid-column: span 3; text-align: center; color: var(--text-muted); padding: 40px 0;">No assets found in this category yet.</div>
+                    `;
+                    return;
+                }
+
+                filtered.forEach(asset => {
+                    const card = document.createElement('div');
+                    card.className = `project-card ${asset.tagClass === 'gold' ? 'featured' : ''}`;
+                    card.setAttribute('data-id', asset.id);
+
+                    card.innerHTML = `
+                        <div class="project-edition-tag ${asset.tagClass}">${asset.edition}</div>
+                        <div class="project-img-container">
+                            <img src="${asset.image}" alt="${asset.title}" class="project-img">
+                            <div class="project-overlay"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">${asset.title}</h3>
+                            <p class="project-desc tr-text">${asset.descTR}</p>
+                            <p class="project-desc en-text">${asset.descEN}</p>
+                            <ul class="project-features tr-text">
+                                ${asset.featuresTR.map(f => `<li><i class="fa-solid fa-circle-chevron-right"></i> ${f}</li>`).join('')}
+                            </ul>
+                            <ul class="project-features en-text">
+                                ${asset.featuresEN.map(f => `<li><i class="fa-solid fa-circle-chevron-right"></i> ${f}</li>`).join('')}
+                            </ul>
+                            <div class="project-footer">
+                                <span class="project-status tr-text">${asset.categoryTR.toUpperCase()}</span>
+                                <span class="project-status en-text">${asset.categoryEN.toUpperCase()}</span>
+                                <a href="details.html?id=${asset.id}" class="btn btn-card ${asset.tagClass === 'gold' ? 'gold-btn' : ''} tr-text">Detayları Gör <i class="fa-solid fa-angle-right"></i></a>
+                                <a href="details.html?id=${asset.id}" class="btn btn-card ${asset.tagClass === 'gold' ? 'gold-btn' : ''} en-text">View Details <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    `;
+                    gridContainer.appendChild(card);
+                });
+
+                // Attach click handlers to newly created cards
+                const cards = gridContainer.querySelectorAll('.project-card');
+                cards.forEach(card => {
+                    card.style.cursor = 'pointer';
+                    card.addEventListener('click', (e) => {
+                        if (e.target.closest('a')) return;
+                        const assetId = card.getAttribute('data-id');
+                        if (assetId) {
+                            window.location.href = `details.html?id=${assetId}`;
+                        }
+                    });
+                });
+            };
+
+            // Filter button event listeners
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const category = btn.getAttribute('data-filter');
+                    renderAssets(category);
+                });
+            });
+
+            // Initial render
+            renderAssets('all');
+        });
+    </script>
+</body>
+</html>

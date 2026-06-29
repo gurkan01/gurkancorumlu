@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="3D Varlık Paketi Detayları - Gürkan Çorumlu. Oyun motoru entegreli model, UV ve rig detayları.">
+    <meta name="author" content="Gürkan Çorumlu">
+    <title>Varlık Detayları | Gürkan Çorumlu 3D Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800;900&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Fog/Mist Canvas Background -->
+    <canvas id="fog-canvas"></canvas>
+
+    <!-- Header / Navigation -->
+    <header class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">GÜRKAN ÇORUMLU</a>
+            
+            <nav class="nav-links">
+                <a href="index.html">
+                    <span class="tr-text">Ana Sayfa</span>
+                    <span class="en-text">Home</span>
+                </a>
+                <a href="index.html#expertise">
+                    <span class="tr-text">Uzmanlık</span>
+                    <span class="en-text">Expertise</span>
+                </a>
+                <a href="assets.html" class="active">
+                    <span class="tr-text">Mağaza Varlıkları</span>
+                    <span class="en-text">Store Assets</span>
+                </a>
+                <a href="index.html#journey">
+                    <span class="tr-text">Deneyim</span>
+                    <span class="en-text">Journey</span>
+                </a>
+                <a href="index.html#contact">
+                    <span class="tr-text">İletişim</span>
+                    <span class="en-text">Contact</span>
+                </a>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="lang-selector">
+                    <button class="lang-btn active" data-lang="tr">TR</button>
+                    <span class="lang-separator">|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                
+                <a href="index.html#contact" class="btn btn-outline cv-btn tr-text">İletişime Geç</a>
+                <a href="index.html#contact" class="btn btn-outline cv-btn en-text">Get in Touch</a>
+                
+                <button class="mobile-toggle" aria-label="Menüyü Aç/Kapat">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer">
+        <button class="mobile-close" aria-label="Menüyü Kapat"><i class="fa-solid fa-xmark"></i></button>
+        <div class="lang-selector-mobile">
+            <button class="lang-btn active" data-lang="tr">TR</button>
+            <span class="lang-separator">|</span>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <nav class="drawer-links">
+            <a href="index.html">
+                <span class="tr-text">Ana Sayfa</span>
+                <span class="en-text">Home</span>
+            </a>
+            <a href="index.html#expertise">
+                <span class="tr-text">Uzmanlık</span>
+                <span class="en-text">Expertise</span>
+            </a>
+            <a href="assets.html">
+                <span class="tr-text">Mağaza Varlıkları</span>
+                <span class="en-text">Store Assets</span>
+            </a>
+            <a href="index.html#journey">
+                <span class="tr-text">Deneyim</span>
+                <span class="en-text">Journey</span>
+            </a>
+            <a href="index.html#contact">
+                <span class="tr-text">İletişim</span>
+                <span class="en-text">Contact</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Details Content -->
+    <main class="section-padding" style="padding-top: 150px;">
+        <div class="container">
+            <!-- Breadcrumbs or back button -->
+            <div class="details-back-nav" style="margin-bottom: 30px;">
+                <a href="assets.html" class="details-back-link">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span class="tr-text">Mağazaya Dön</span>
+                    <span class="en-text">Back to Store</span>
+                </a>
+            </div>
+
+            <div class="details-grid">
+                <!-- Left Column: Visual & Specs -->
+                <div class="details-visual-col">
+                    <div class="details-image-container">
+                        <span id="details-edition" class="project-edition-tag">STANDARD EDITION</span>
+                        <img id="details-image" src="assets/images/project_preview.png" alt="Asset Image" class="details-hero-img">
+                        <div class="project-overlay"></div>
+                    </div>
+                    
+                    <!-- Specifications Block -->
+                    <div class="details-specs-block">
+                        <h3 class="details-section-title">
+                            <span class="tr-text">TEKNİK DETAYLAR</span>
+                            <span class="en-text">TECHNICAL SPECS</span>
+                        </h3>
+                        <div class="details-specs-grid" id="details-specs-list">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Description & Purchase Actions -->
+                <div class="details-info-col">
+                    <div class="details-header-info">
+                        <span id="details-category-badge" class="details-cat-tag">MODELLEME</span>
+                        <h1 id="details-title" class="details-main-title">Asset Pack Title</h1>
+                        <p id="details-desc-short" class="details-short-desc">Short description of the pack</p>
+                    </div>
+
+                    <!-- Long Description Box -->
+                    <div class="details-description-box">
+                        <h3 class="details-section-title">
+                            <span class="tr-text">AÇIKLAMA</span>
+                            <span class="en-text">DESCRIPTION</span>
+                        </h3>
+                        <p id="details-long-desc" class="details-long-desc-p">
+                            Long description text explaining how the asset works.
+                        </p>
+                    </div>
+
+                    <!-- Animation list if applicable -->
+                    <div id="details-animations-section" class="details-animations-box" style="display: none;">
+                        <h3 class="details-section-title">
+                            <span class="tr-text">ANİMASYON LİSTESİ</span>
+                            <span class="en-text">ANIMATION LIST</span>
+                        </h3>
+                        <ul id="details-animations-list" class="details-anim-ul">
+                            <!-- Injected by JS -->
+                        </ul>
+                    </div>
+
+                    <!-- Purchase Actions -->
+                    <div class="details-action-box">
+                        <h3 class="details-section-title">
+                            <span class="tr-text">MAĞAZA BAĞLANTILARI</span>
+                            <span class="en-text">STORE LINKS</span>
+                        </h3>
+                        <div class="details-buttons-row">
+                            <a id="details-fab-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-store">
+                                <span class="tr-text">Fab Marketplace'den Al <i class="fa-solid fa-store"></i></span>
+                                <span class="en-text">Buy on Fab Marketplace <i class="fa-solid fa-store"></i></span>
+                            </a>
+                            <a id="details-unity-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-store gold-btn">
+                                <span class="tr-text">Unity Asset Store'dan Al <i class="fa-brands fa-unity"></i></span>
+                                <span class="en-text">Buy on Unity Asset Store <i class="fa-brands fa-unity"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">GÜRKAN ÇORUMLU</div>
+            <p class="footer-copy">
+                &copy; 2026 Gürkan Çorumlu. <span class="tr-text">Tüm hakları saklıdır.</span><span class="en-text">All rights reserved.</span>
+            </p>
+            <p class="footer-host tr-text">
+                Bu web sitesi <a href="https://www.digitalocean.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-digitalocean"></i> DigitalOcean</a> üzerinde barındırılmaktadır.
+            </p>
+            <p class="footer-host en-text">
+                This website is hosted on <a href="https://www.digitalocean.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-digitalocean"></i> DigitalOcean</a>.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="db.js"></script>
+    <script src="app.js"></script>
+    <script src="details.js"></script>
+</body>
+</html>

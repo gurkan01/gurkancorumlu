@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetim Paneli | Gürkan Çorumlu</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800;900&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="panel.css">
+</head>
+<body class="admin-body">
+
+    <!-- Fog/Mist Canvas Background -->
+    <canvas id="fog-canvas"></canvas>
+
+    <!-- Header / Navigation -->
+    <header class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">GÜRKAN ÇORUMLU <span style="font-size: 11px; color: var(--text-muted);">YÖNETİM PANELİ</span></a>
+            
+            <div class="nav-actions">
+                <div class="lang-selector">
+                    <button class="lang-btn active" data-lang="tr">TR</button>
+                    <span class="lang-separator">|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <a href="index.html" target="_blank" class="btn btn-outline cv-btn">
+                    <span class="tr-text">Siteyi Gör <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                    <span class="en-text">View Site <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- LOGIN PANEL -->
+    <div class="login-wrapper" id="login-container">
+        <div class="login-card">
+            <h2 class="login-title">PANEL GİRİŞİ</h2>
+            
+            <div class="login-error" id="login-error-msg">
+                Kullanıcı adı veya şifre hatalı!
+            </div>
+            
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <input type="text" id="username" required placeholder=" ">
+                    <label for="username">Kullanıcı Adı</label>
+                </div>
+                <div class="form-group" style="margin-bottom: 35px;">
+                    <input type="password" id="password" required placeholder=" ">
+                    <label for="password">Şifre</label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">GİRİŞ YAP</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAIN DASHBOARD -->
+    <div class="dashboard-wrapper" id="dashboard-container">
+        <div class="dashboard-header">
+            <h2 class="dashboard-title">
+                <span class="tr-text">YÖNETİM MASASI</span>
+                <span class="en-text">ADMIN CONSOLE</span>
+            </h2>
+            
+            <div class="admin-nav-tabs">
+                <button class="admin-tab-btn active" data-target="pane-assets">
+                    <span class="tr-text">VARLIK PAKETLERİ</span>
+                    <span class="en-text">ASSET PACKS</span>
+                </button>
+                <button class="admin-tab-btn" data-target="pane-journey">
+                    <span class="tr-text">KARİYER YOLCULUĞU</span>
+                    <span class="en-text">CAREER JOURNEY</span>
+                </button>
+                <button class="admin-tab-btn admin-logout-btn" id="logout-btn">
+                    <span class="tr-text">ÇIKIŞ YAP <i class="fa-solid fa-power-off"></i></span>
+                    <span class="en-text">LOGOUT <i class="fa-solid fa-power-off"></i></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 1. Assets Manager Pane -->
+        <div class="admin-tab-pane active" id="pane-assets">
+            <div class="pane-actions-row">
+                <h3 class="pane-title tr-text">Tüm Varlık Paketleri</h3>
+                <h3 class="pane-title en-text">All Asset Packages</h3>
+                <button class="btn btn-primary btn-card" id="add-asset-btn">
+                    <span class="tr-text"><i class="fa-solid fa-plus"></i> Yeni Paket Ekle</span>
+                    <span class="en-text"><i class="fa-solid fa-plus"></i> Add New Package</span>
+                </button>
+            </div>
+            
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th width="80"><span class="tr-text">Görsel</span><span class="en-text">Thumb</span></th>
+                            <th><span class="tr-text">Paket Adı</span><span class="en-text">Title</span></th>
+                            <th><span class="tr-text">Kategori</span><span class="en-text">Category</span></th>
+                            <th><span class="tr-text">Sürüm</span><span class="en-text">Edition</span></th>
+                            <th width="180"><span class="tr-text">İşlemler</span><span class="en-text">Actions</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="assets-table-body">
+                        <!-- Rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 2. Journey Manager Pane -->
+        <div class="admin-tab-pane" id="pane-journey">
+            <div class="pane-actions-row">
+                <h3 class="pane-title tr-text">Kariyer Kronolojisi</h3>
+                <h3 class="pane-title en-text">Career Timeline</h3>
+                <button class="btn btn-primary btn-card" id="add-journey-btn">
+                    <span class="tr-text"><i class="fa-solid fa-plus"></i> Yeni Kayıt Ekle</span>
+                    <span class="en-text"><i class="fa-solid fa-plus"></i> Add New Item</span>
+                </button>
+            </div>
+            
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th width="120"><span class="tr-text">Yıllar</span><span class="en-text">Years</span></th>
+                            <th><span class="tr-text">Rol (TR)</span><span class="en-text">Role (EN)</span></th>
+                            <th><span class="tr-text">Kurum / Firma</span><span class="en-text">Company</span></th>
+                            <th width="180"><span class="tr-text">İşlemler</span><span class="en-text">Actions</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="journey-table-body">
+                        <!-- Rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ASSET FORM MODAL OVERLAY -->
+    <div class="admin-modal-overlay" id="asset-modal">
+        <div class="admin-modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="asset-modal-title">Paket Düzenle</h3>
+                <button class="modal-close" id="asset-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <form id="asset-edit-form" class="admin-form">
+                <input type="hidden" id="asset-form-mode" value="create"> <!-- create or edit -->
+                <input type="hidden" id="asset-form-target-id" value="">
+
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label for="asset-title">Paket Adı (Title)</label>
+                        <input type="text" id="asset-title" required class="admin-input" placeholder="e.g. Cyberpunk Neon Pack">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="asset-slug-id">Benzersiz Kimlik (Slug ID - URL için)</label>
+                        <input type="text" id="asset-slug-id" required class="admin-input" placeholder="e.g. cyberpunk-neon-pack">
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label for="asset-category">Kategori (Category)</label>
+                        <select id="asset-category" class="admin-select">
+                            <option value="modeling">3D Modeling & UV (Modelleme)</option>
+                            <option value="rigging">Rigging & Skin (Rigleme)</option>
+                            <option value="animation">Animation (Animasyon)</option>
+                        </select>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="asset-edition">Kart Başlığı (Edition Tag)</label>
+                        <select id="asset-edition" class="admin-select">
+                            <option value="STANDARD EDITION">STANDARD EDITION</option>
+                            <option value="DELUXE EDITION">DELUXE EDITION (Gold)</option>
+                            <option value="COMPLETE EDITION">COMPLETE EDITION (Red)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="admin-form-group">
+                    <label for="asset-image">Görsel Yolu (Image Path)</label>
+                    <input type="text" id="asset-image" class="admin-input" value="assets/images/project_preview.png">
+                </div>
+
+                <div class="admin-form-section-title">AÇIKLAMA METİNLERİ / DESCRIPTIONS</div>
+                
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label for="asset-desc-tr">Kısa Açıklama (Türkçe)</label>
+                        <input type="text" id="asset-desc-tr" required class="admin-input" placeholder="Oyun kartı altında görünecek kısa metin">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="asset-desc-en">Short Description (English)</label>
+                        <input type="text" id="asset-desc-en" required class="admin-input" placeholder="Short description for card display">
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label for="asset-details-tr">Detaylı Açıklama (Türkçe)</label>
+                        <textarea id="asset-details-tr" rows="3" required class="admin-textarea" placeholder="Detay sayfasında çıkacak uzun açıklama"></textarea>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="asset-details-en">Long Description (English)</label>
+                        <textarea id="asset-details-en" rows="3" required class="admin-textarea" placeholder="Detailed description for dynamic page"></textarea>
+                    </div>
+                </div>
+
+                <div class="admin-form-section-title">ÖZELLİK MADDELERİ / BULLET FEATURES (Virgülle Ayırın)</div>
+
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label for="asset-features-tr">Özellikler (Türkçe - Virgülle ayırın, maks. 4 madde)</label>
+                        <input type="text" id="asset-features-tr" required class="admin-input" placeholder="LOD desteği, PBR Kaplamalar, Unity Hazır">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="asset-features-en">Features (English - Comma separated, max 4 bullets)</label>
+                        <input type="text" id="asset-features-en" required class="admin-input" placeholder="LOD Support, PBR textures, Unity Ready">
+                    </div>
+                </div>
+
+                <div class="admin-form-section-title">TEKNİK TABLO DETAYLARI / SPECIFICATIONS</div>
+
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label for="asset-spec-poly-tr">Poligon Sayısı (TR)</label>
+                        <input type="text" id="asset-spec-poly-tr" class="admin-input" placeholder="e.g. Ort. 1200 - 3500 Triangles">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="asset-spec-poly-en">Poly Count (EN)</label>
+                        <input type="text" id="asset-spec-poly-en" class="admin-input" placeholder="e.g. Avg. 1200 - 3500 Triangles">
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label for="asset-spec-tex-tr">Kaplamalar (TR)</label>
+                        <input type="text" id="asset-spec-tex-tr" class="admin-input" placeholder="e.g. PBR 2K Kaplamalar">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="asset-spec-tex-en">Textures (EN)</label>
+                        <input type="text" id="asset-spec-tex-en" class="admin-input" placeholder="e.g. PBR 2K textures">
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label for="asset-spec-uv-tr">UV Düzeni (TR)</label>
+                        <input type="text" id="asset-spec-uv-tr" class="admin-input" placeholder="e.g. Temiz Overlap edilmemiş UV">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="asset-spec-uv-en">UV Layout (EN)</label>
+                        <input type="text" id="asset-spec-uv-en" class="admin-input" placeholder="e.g. Clean unwrapped UV mapping">
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label for="asset-spec-format-tr">Formatlar (TR)</label>
+                        <input type="text" id="asset-spec-format-tr" class="admin-input" placeholder="e.g. FBX, Blender, Unitypackage">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="asset-spec-format-en">Formats (EN)</label>
+                        <input type="text" id="asset-spec-format-en" class="admin-input" placeholder="e.g. FBX, Blender, Unitypackage">
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label for="asset-spec-collider-tr">Collider Türü (TR)</label>
+                        <input type="text" id="asset-spec-collider-tr" class="admin-input" placeholder="e.g. Özel Mesh Collider">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="asset-spec-collider-en">Collider Type (EN)</label>
+                        <input type="text" id="asset-spec-collider-en" class="admin-input" placeholder="e.g. Custom Mesh Collider">
+                    </div>
+                </div>
+
+                <div class="admin-form-section-title">MARKET LİNKLERİ / STORE LINKS</div>
+
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label for="asset-fab-link">Epic Games Fab Linki</label>
+                        <input type="url" id="asset-fab-link" class="admin-input" placeholder="https://www.fab.com/...">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="asset-unity-link">Unity Asset Store Linki</label>
+                        <input type="url" id="asset-unity-link" class="admin-input" placeholder="https://assetstore.unity.com/...">
+                    </div>
+                </div>
+
+                <div class="admin-form-section-title">ANIMASYON LİSTESİ / ANIMATIONS (Varsa, Virgülle Ayırın)</div>
+
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label for="asset-anims-tr">Animasyon Adları (Türkçe)</label>
+                        <input type="text" id="asset-anims-tr" class="admin-input" placeholder="Idle (Bekleme), Yürüme, Koşma, Saldırı">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="asset-anims-en">Animation Names (English)</label>
+                        <input type="text" id="asset-anims-en" class="admin-input" placeholder="Idle, Walk, Run, Attack">
+                    </div>
+                </div>
+
+                <div class="modal-footer-buttons">
+                    <button type="button" class="btn btn-secondary" id="asset-modal-cancel">Vazgeç</button>
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JOURNEY FORM MODAL OVERLAY -->
+    <div class="admin-modal-overlay" id="journey-modal">
+        <div class="admin-modal" style="max-width: 600px;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="journey-modal-title">Kayıt Düzenle</h3>
+                <button class="modal-close" id="journey-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <form id="journey-edit-form" class="admin-form">
+                <input type="hidden" id="journey-form-mode" value="create">
+                <input type="hidden" id="journey-form-target-id" value="">
+
+                <div class="admin-form-group">
+                    <label for="journey-years">Yıl Aralığı (e.g. 2024 - BUGÜN)</label>
+                    <input type="text" id="journey-years" required class="admin-input" placeholder="e.g. 2024 - BUGÜN">
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label for="journey-role-tr">Rol / Ünvan (Türkçe)</label>
+                        <input type="text" id="journey-role-tr" required class="admin-input" placeholder="e.g. Teknik Animasyon Sorumlusu">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="journey-role-en">Role / Title (English)</label>
+                        <input type="text" id="journey-role-en" required class="admin-input" placeholder="e.g. Technical Animator">
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label for="journey-company-tr">Şirket / Kurum (Türkçe)</label>
+                        <input type="text" id="journey-company-tr" required class="admin-input" placeholder="e.g. Oyun Stüdyoları">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="journey-company-en">Company / Institute (English)</label>
+                        <input type="text" id="journey-company-en" required class="admin-input" placeholder="e.g. Game Studios">
+                    </div>
+                </div>
+
+                <div class="admin-form-group">
+                    <label for="journey-desc-tr">Açıklama (Türkçe)</label>
+                    <textarea id="journey-desc-tr" rows="4" required class="admin-textarea" placeholder="Yaptığınız işleri kısaca açıklayın..."></textarea>
+                </div>
+
+                <div class="admin-form-group">
+                    <label for="journey-desc-en">Description (English)</label>
+                    <textarea id="journey-desc-en" rows="4" required class="admin-textarea" placeholder="Describe your responsibilities..."></textarea>
+                </div>
+
+                <div class="modal-footer-buttons">
+                    <button type="button" class="btn btn-secondary" id="journey-modal-cancel">Vazgeç</button>
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- DB controller and panel actions -->
+    <script src="db.js"></script>
+    <script src="app.js"></script>
+    <script src="panel.js"></script>
+</body>
+</html>

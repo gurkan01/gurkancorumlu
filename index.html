@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gürkan Çorumlu - 3D Modelleme, UV Mapping, Rigleme ve Animasyon Uzmanı. Fab Marketplace ve Unity Asset Store için optimize edilmiş 3D oyun varlıkları.">
+    <meta name="author" content="Gürkan Çorumlu">
+    <title>Gürkan Çorumlu | 3D Artist & Technical Animator</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800;900&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Fog/Mist Canvas Background -->
+    <canvas id="fog-canvas"></canvas>
+
+    <!-- Header / Navigation -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">GÜRKAN ÇORUMLU</a>
+            
+            <nav class="nav-links">
+                <a href="#hero" class="active">
+                    <span class="tr-text">Ana Sayfa</span>
+                    <span class="en-text">Home</span>
+                </a>
+                <a href="#expertise">
+                    <span class="tr-text">Uzmanlık</span>
+                    <span class="en-text">Expertise</span>
+                </a>
+                <a href="#projects">
+                    <span class="tr-text">Mağaza Varlıkları</span>
+                    <span class="en-text">Store Assets</span>
+                </a>
+                <a href="#journey">
+                    <span class="tr-text">Deneyim</span>
+                    <span class="en-text">Journey</span>
+                </a>
+                <a href="#contact">
+                    <span class="tr-text">İletişim</span>
+                    <span class="en-text">Contact</span>
+                </a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Language Toggle Button -->
+                <div class="lang-selector">
+                    <button class="lang-btn active" data-lang="tr">TR</button>
+                    <span class="lang-separator">|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                
+                <a href="#contact" class="btn btn-outline cv-btn tr-text">İletişime Geç</a>
+                <a href="#contact" class="btn btn-outline cv-btn en-text">Get in Touch</a>
+                
+                <button class="mobile-toggle" aria-label="Menüyü Aç/Kapat">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer">
+        <button class="mobile-close" aria-label="Menüyü Kapat"><i class="fa-solid fa-xmark"></i></button>
+        <div class="lang-selector-mobile">
+            <button class="lang-btn active" data-lang="tr">TR</button>
+            <span class="lang-separator">|</span>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <nav class="drawer-links">
+            <a href="#hero">
+                <span class="tr-text">Ana Sayfa</span>
+                <span class="en-text">Home</span>
+            </a>
+            <a href="#expertise">
+                <span class="tr-text">Uzmanlık</span>
+                <span class="en-text">Expertise</span>
+            </a>
+            <a href="#projects">
+                <span class="tr-text">Mağaza Varlıkları</span>
+                <span class="en-text">Store Assets</span>
+            </a>
+            <a href="#journey">
+                <span class="tr-text">Deneyim</span>
+                <span class="en-text">Journey</span>
+            </a>
+            <a href="#contact">
+                <span class="tr-text">İletişim</span>
+                <span class="en-text">Contact</span>
+            </a>
+            <a href="#contact" class="btn btn-outline cv-btn-mobile tr-text">İletişime Geç</a>
+            <a href="#contact" class="btn btn-outline cv-btn-mobile en-text">Get in Touch</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <p class="hero-tagline tr-text">3D OYUN VARLIKLARI SANATÇISI</p>
+                <p class="hero-tagline en-text">3D GAME ASSET ARTIST</p>
+                <h1 class="hero-title">GÜRKAN ÇORUMLU</h1>
+                <p class="hero-subtitle">3D Artist & Technical Animator</p>
+                
+                <p class="hero-description tr-text">
+                    Oyun motorları için optimize edilmiş yüksek kaliteli 3D modelleme (modeling), temiz ve verimli UV mapping, profesyonel rigleme (rigging) ve gerçekçi karakter animasyonları hazırlıyorum. Unity Asset Store ve Fab mağazalarında hazır varlıklar (assets) yayınlıyorum.
+                </p>
+                <p class="hero-description en-text">
+                    I craft high-quality 3D modeling, clean and efficient UV mapping, professional rigging, and realistic character animations optimized for game engines. I publish ready-to-use assets on Epic Games' Fab and Unity Asset Store.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary tr-text">Mağazamı İncele <i class="fa-solid fa-store"></i></a>
+                    <a href="#projects" class="btn btn-primary en-text">Explore My Shop <i class="fa-solid fa-store"></i></a>
+                    <a href="#expertise" class="btn btn-secondary tr-text">Yeteneklerimi Gör</a>
+                    <a href="#expertise" class="btn btn-secondary en-text">View My Skills</a>
+                </div>
+                <div class="hero-footer-badges">
+                    <div class="badge-item"><i class="fa-solid fa-cube"></i> 3D Modeling</div>
+                    <div class="badge-item"><i class="fa-solid fa-circle-nodes"></i> Custom Rigging</div>
+                    <div class="badge-item"><i class="fa-solid fa-person-running"></i> 3D Animation</div>
+                    <div class="badge-item"><i class="fa-solid fa-circle-check"></i> Game-Ready</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile & Expertise Section (Ethan Winters Style Selector) -->
+        <section id="expertise" class="expertise-section section-padding">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-number">01</span>
+                    <h2 class="section-title tr-text">UZMANLIK ALANLARI</h2>
+                    <h2 class="section-title en-text">CORE EXPERTISE</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div class="expertise-grid">
+                    <!-- Left Panel: Content of selected role -->
+                    <div class="expertise-info-panel">
+                        
+                        <!-- 1. 3D Modeling Panel -->
+                        <div class="role-details active" id="role-modeling">
+                            <h3 class="role-title tr-text">3D Modelleme (Modeling)</h3>
+                            <h3 class="role-title en-text">3D Modeling</h3>
+                            
+                            <p class="role-desc tr-text">
+                                Düşük poligonlu (low-poly) mobil oyun nesnelerinden, yüksek poligonlu (high-poly) detaylı sinematik karakter ve çevre modellerine kadar geniş bir yelpazede çalışıyorum. Hard-surface ve organik modelleri oyun motoru standartlarında optimize ediyorum.
+                            </p>
+                            <p class="role-desc en-text">
+                                I work across a wide spectrum, from low-poly assets for mobile games to high-poly detailed cinematic character and environment models. I optimize hard-surface and organic meshes to game engine standards.
+                            </p>
+                            
+                            <ul class="role-skills-list tr-text">
+                                <li><i class="fa-solid fa-circle-check"></i> Düşük ve Yüksek Poligon Modelleme (Low-Poly / High-Poly)</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Hard-Surface Çevre ve Prop Tasarımları</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Blender, ZBrush ve Maya ile Profesyonel Tasarım</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Oyun İçi Optimizasyon (LOD Seviyeleri, Collider Tanımları)</li>
+                            </ul>
+                            <ul class="role-skills-list en-text">
+                                <li><i class="fa-solid fa-circle-check"></i> Low-Poly & High-Poly Modeling</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Hard-Surface Environment & Prop Design</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Professional Design with Blender, ZBrush & Maya</li>
+                                <li><i class="fa-solid fa-circle-check"></i> In-Game Optimization (LOD Levels, Collider Setups)</li>
+                            </ul>
+                            
+                            <div class="role-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">98%</span>
+                                    <span class="metric-label tr-text">Mesh Optimizasyonu</span>
+                                    <span class="metric-label en-text">Mesh Optimization</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">100%</span>
+                                    <span class="metric-label tr-text">Oyun Hazır (Game-Ready)</span>
+                                    <span class="metric-label en-text">Game-Ready</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. UV & Texturing Panel -->
+                        <div class="role-details" id="role-texturing">
+                            <h3 class="role-title tr-text">UV Layout & Texturing</h3>
+                            <h3 class="role-title en-text">UV Layout & Texturing</h3>
+                            
+                            <p class="role-desc tr-text">
+                                Modellerin en verimli şekilde kaplanabilmesi için dikişsiz (seamless) ve sıkıştırılmış UV haritaları çıkarıyorum. Substance Painter kullanarak PBR (Physically Based Rendering) standartlarında gerçekçi veya stylized dokular üretiyorum.
+                            </p>
+                            <p class="role-desc en-text">
+                                I generate seamless, optimized UV layouts to ensure the most efficient texturing process. Using Substance Painter, I create realistic or stylized textures conforming to PBR (Physically Based Rendering) standards.
+                            </p>
+                            
+                            <ul class="role-skills-list tr-text">
+                                <li><i class="fa-solid fa-circle-check"></i> Profesyonel ve Hızlı UV Açılımı (UV Unwrapping)</li>
+                                <li><i class="fa-solid fa-circle-check"></i> PBR Dokulandırma (Substance Painter / Designer)</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Stylized & Hand-painted Kaplama Teknikleri</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Texture Atlasing ile Draw Call Optimizasyonu</li>
+                            </ul>
+                            <ul class="role-skills-list en-text">
+                                <li><i class="fa-solid fa-circle-check"></i> Professional and Fast UV Unwrapping</li>
+                                <li><i class="fa-solid fa-circle-check"></i> PBR Texturing (Substance Painter / Designer)</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Stylized & Hand-painted Texturing Techniques</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Draw Call Optimization via Texture Atlasing</li>
+                            </ul>
+                            
+                            <div class="role-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">4K</span>
+                                    <span class="metric-label tr-text">Maks. Çözünürlük</span>
+                                    <span class="metric-label en-text">Max Resolution</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">95%</span>
+                                    <span class="metric-label tr-text">UV Alanı Verimliliği</span>
+                                    <span class="metric-label en-text">UV Space Efficiency</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Rigging Panel -->
+                        <div class="role-details" id="role-rigging">
+                            <h3 class="role-title tr-text">Kemiklendirme & Rigleme (Rigging)</h3>
+                            <h3 class="role-title en-text">Rigging & Skinning</h3>
+                            
+                            <p class="role-desc tr-text">
+                                Karakterlerin ve mekanik nesnelerin canlandırılabilmesi için esnek, hatasız ve oyun motorlarıyla (Unity / Unreal Engine) tam uyumlu kemik yapıları kuruyorum. Skinning işlemlerini kusursuz bükülmeler sağlayacak şekilde yapıyorum.
+                            </p>
+                            <p class="role-desc en-text">
+                                I build flexible, error-free bone structures fully compatible with game engines (Unity / Unreal Engine) for character and mechanical assets. I paint skins to guarantee flawless joint deformations.
+                            </p>
+                            
+                            <ul class="role-skills-list tr-text">
+                                <li><i class="fa-solid fa-circle-check"></i> İnsansı (Humanoid) ve Hayvan/Yaratık (Generic) Rig Sistemleri</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Mekanik Nesneler ve Araç Rigleme Altyapıları</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Yüz Rigleme (Facial Rig) ve Blendshape Entegrasyonları</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Unity Mecanim / Unreal Control Rig Uyumluluğu</li>
+                            </ul>
+                            <ul class="role-skills-list en-text">
+                                <li><i class="fa-solid fa-circle-check"></i> Humanoid & Animal/Creature (Generic) Rig Setups</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Mechanical & Vehicle Rigging Architectures</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Facial Rigging & Blendshape Integrations</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Unity Mecanim / Unreal Control Rig Compatibility</li>
+                            </ul>
+                            
+                            <div class="role-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">0 Hata</span>
+                                    <span class="metric-label tr-text">Eklem Bükülme (Skinning)</span>
+                                    <span class="metric-label en-text">Joint Deformation</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">100%</span>
+                                    <span class="metric-label tr-text">Motor Entegrasyonu</span>
+                                    <span class="metric-label en-text">Engine Integration</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Animation Panel -->
+                        <div class="role-details" id="role-animation">
+                            <h3 class="role-title tr-text">3D Animasyon (Animation)</h3>
+                            <h3 class="role-title en-text">3D Animation</h3>
+                            
+                            <p class="role-desc tr-text">
+                                Karakterlere ve nesnelere hayat veriyorum. Oyun içi döngüler (idle, walk, run, jump, combat) ve sinematik sahneler için akıcı, ağırlık hissi yüksek animasyonlar hazırlıyorum.
+                            </p>
+                            <p class="role-desc en-text">
+                                I breathe life into characters and objects. I produce fluid, high-weight-feeling animations for in-game cycles (idle, walk, run, jump, combat) and cinematic sequences.
+                            </p>
+                            
+                            <ul class="role-skills-list tr-text">
+                                <li><i class="fa-solid fa-circle-check"></i> Oyun İçi Animasyon Döngüleri (Seamless Loop Cycles)</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Dövüş ve Etkileşim Animasyon Setleri</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Keyframe Animasyonu & Motion Capture Düzenleme</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Dinamik Saç, Bez ve Fizik Destekli Animasyonlar</li>
+                            </ul>
+                            <ul class="role-skills-list en-text">
+                                <li><i class="fa-solid fa-circle-check"></i> In-Game Seamless Loop Cycles</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Combat & Interaction Animation Sets</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Keyframe Animation & Motion Capture Editing</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Dynamic Hair, Cloth & Physics-Based Animations</li>
+                            </ul>
+                            
+                            <div class="role-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">60 FPS</span>
+                                    <span class="metric-label tr-text">Akıcı Hareketler</span>
+                                    <span class="metric-label en-text">Smooth Animation</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">15+</span>
+                                    <span class="metric-label tr-text">Paket Başına Animasyon</span>
+                                    <span class="metric-label en-text">Animations Per Pack</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Center Panel: The Developer Avatar (glowing frame) -->
+                    <div class="expertise-avatar-panel">
+                        <div class="avatar-frame">
+                            <div class="glow-ring"></div>
+                            <img src="assets/images/developer_avatar.png" alt="Gürkan Çorumlu Avatar" class="avatar-img">
+                        </div>
+                    </div>
+
+                    <!-- Right Panel: Interactive Badges (Resident Evil style) -->
+                    <div class="expertise-selectors">
+                        <div class="selector-badge active" data-role="modeling" title="3D Modeling">
+                            <div class="badge-inner">
+                                <i class="fa-solid fa-cube"></i>
+                            </div>
+                            <span class="badge-label tr-text">MODELLEME</span>
+                            <span class="badge-label en-text">MODELING</span>
+                        </div>
+                        <div class="selector-badge" data-role="texturing" title="UV & Texturing">
+                            <div class="badge-inner">
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+                            <span class="badge-label tr-text">UV & KAPLAMA</span>
+                            <span class="badge-label en-text">UV & TEXTURE</span>
+                        </div>
+                        <div class="selector-badge" data-role="rigging" title="Rigging">
+                            <div class="badge-inner">
+                                <i class="fa-solid fa-circle-nodes"></i>
+                            </div>
+                            <span class="badge-label tr-text">RİG & SKİN</span>
+                            <span class="badge-label en-text">RIG & SKIN</span>
+                        </div>
+                        <div class="selector-badge" data-role="animation" title="Animation">
+                            <div class="badge-inner">
+                                <i class="fa-solid fa-person-running"></i>
+                            </div>
+                            <span class="badge-label tr-text">ANİMASYON</span>
+                            <span class="badge-label en-text">ANIMATION</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section (Ediciones Style Cards) -->
+        <section id="projects" class="projects-section section-padding">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-number">02</span>
+                    <h2 class="section-title tr-text">ÖNE ÇIKAN VARLIK PAKETLERİ</h2>
+                    <h2 class="section-title en-text">FEATURED ASSET PACKS</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div class="projects-grid" id="home-projects-grid">
+                    <!-- Injected dynamically by app.js -->
+                </div>
+
+                <!-- View All Button -->
+                <div class="projects-action text-center">
+                    <a href="assets.html" class="btn btn-outline">
+                        <span class="tr-text">Tüm Paketleri Gör <i class="fa-solid fa-arrow-right"></i></span>
+                        <span class="en-text">View All Assets <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Journey Section (Locaciones Jugables Style Slider) -->
+        <section id="journey" class="journey-section section-padding">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-number">03</span>
+                    <h2 class="section-title tr-text">KARİYER YOLCULUĞU</h2>
+                    <h2 class="section-title en-text">CAREER JOURNEY</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div class="journey-wrapper">
+                    <!-- Carousel Controls -->
+                    <div class="journey-controls">
+                        <button class="journey-btn prev" aria-label="Önceki"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button class="journey-btn next" aria-label="Sonraki"><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+
+                    <div class="journey-track-container">
+                        <div class="journey-track" id="home-journey-track">
+                            <!-- Injected dynamically by app.js -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section section-padding">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-number">04</span>
+                    <h2 class="section-title tr-text">İLETİŞİME GEÇ</h2>
+                    <h2 class="section-title en-text">GET IN TOUCH</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Contact Information -->
+                    <div class="contact-info">
+                        <h3 class="contact-subtitle tr-text">İş Birliği Kurun</h3>
+                        <h3 class="contact-subtitle en-text">Let's Collaborate</h3>
+                        
+                        <p class="contact-text tr-text">
+                            Özel 3D model siparişleriniz, rig/animasyon projeleriniz ya da lisanslama sorularınız için doğrudan benimle iletişime geçebilirsiniz.
+                        </p>
+                        <p class="contact-text en-text">
+                            For custom 3D model commissions, rigging/animation projects, or licensing inquiries, feel free to contact me directly.
+                        </p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-detail-item">
+                                <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <div class="contact-detail-text">
+                                    <span class="tr-text">E-posta</span>
+                                    <span class="en-text">Email</span>
+                                    <a href="mailto:gcorum01@gmail.com">gcorum01@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-detail-item">
+                                <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                <div class="contact-detail-text">
+                                    <span class="tr-text">Konum</span>
+                                    <span class="en-text">Location</span>
+                                    <p class="tr-text">İstanbul, Türkiye</p>
+                                    <p class="en-text">Istanbul, Turkey</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="https://github.com/gurkan01" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="#" class="social-icon" aria-label="ArtStation"><i class="fa-brands fa-artstation"></i></a>
+                            <a href="https://www.linkedin.com/in/g%C3%BCrkan-%C3%A7orumlu-41a6ab17b/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-panel">
+                        <form id="portfolio-contact-form" class="contact-form" action="#" method="POST">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="name" name="name" required placeholder=" ">
+                                    <label for="name" class="tr-text">Adınız Soyadınız</label>
+                                    <label for="name" class="en-text">Your Name</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" id="email" name="email" required placeholder=" ">
+                                    <label for="email" class="tr-text">E-posta Adresiniz</label>
+                                    <label for="email" class="en-text">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="subject" name="subject" required placeholder=" ">
+                                <label for="subject" class="tr-text">Konu</label>
+                                <label for="subject" class="en-text">Subject</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+                                <label for="message" class="tr-text">Mesajınız</label>
+                                <label for="message" class="en-text">Your Message</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <span class="tr-text">Gönder <i class="fa-solid fa-paper-plane"></i></span>
+                                <span class="en-text">Send Message <i class="fa-solid fa-paper-plane"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">GÜRKAN ÇORUMLU</div>
+            <p class="footer-copy">
+                &copy; 2026 Gürkan Çorumlu. <span class="tr-text">Tüm hakları saklıdır.</span><span class="en-text">All rights reserved.</span>
+            </p>
+            <p class="footer-host tr-text">
+                Bu web sitesi <a href="https://www.digitalocean.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-digitalocean"></i> DigitalOcean</a> üzerinde barındırılmaktadır.
+            </p>
+            <p class="footer-host en-text">
+                This website is hosted on <a href="https://www.digitalocean.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-digitalocean"></i> DigitalOcean</a>.
+            </p>
+            <p class="footer-admin" style="margin-top: 15px; font-size: 11px;">
+                <a href="panel.html" style="color: var(--text-muted); text-decoration: none; border: 1px solid var(--border-color); padding: 4px 10px; transition: var(--transition-fast);">
+                    <span class="tr-text">[ Yönetim Paneli ]</span>
+                    <span class="en-text">[ Admin Panel ]</span>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- App JavaScript -->
+    <script src="db.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
