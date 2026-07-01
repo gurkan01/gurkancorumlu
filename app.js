@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 : 'Gönderiliyor... <i class="fa-solid fa-spinner fa-spin"></i>';
 
             // 3. Make AJAX Post Request to FormSubmit.co
-            fetch("https://formsubmit.co/ajax/gcorum01@gmail.com", {
+            fetch("https://formsubmit.co/ajax/29de2b6a9668d01b072469f8551f2368", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
