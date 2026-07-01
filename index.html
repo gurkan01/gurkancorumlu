@@ -453,7 +453,11 @@
 
                     <!-- Contact Form -->
                     <div class="contact-form-panel">
-                        <form id="portfolio-contact-form" class="contact-form" action="#" method="POST">
+                        <form id="portfolio-contact-form" class="contact-form" action="https://formsubmit.co/ajax/gcorum01@gmail.com" method="POST">
+                            <!-- Honeypot field for bot spam protection -->
+                            <input type="text" name="_honey" style="display:none">
+                            <!-- Disable Captcha redirects to keep AJAX flow clean -->
+                            <input type="hidden" name="_captcha" value="false">
                             <div class="form-row">
                                 <div class="form-group">
                                     <input type="text" id="name" name="name" required placeholder=" ">

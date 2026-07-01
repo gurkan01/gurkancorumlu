@@ -324,43 +324,53 @@ const defaultAssets = [
 const defaultJourney = [
     {
         id: "journey-1",
-        years: "2024 - BUGÜN",
-        roleTR: "Bağımsız 3D Varlık Yayıncısı",
-        roleEN: "Independent 3D Publisher",
-        companyTR: "Fab & Unity Asset Store",
-        companyEN: "Fab & Unity Asset Store",
-        descTR: "Oyun geliştiricileri için hazır paketler tasarlıyorum. Modellerin optimizasyonu, UV açılımı, rig ve animasyon süreçlerinin tamamını kendim üstlenerek mağazalarda yayınlıyorum.",
-        descEN: "Designing ready-to-use packs for game developers. I manage the entire pipeline including modeling optimization, UV mapping, rigging, and animations for publishing on asset stores."
+        years: "2024 - 2026",
+        roleTR: "Teknik Direktör (Unreal)",
+        roleEN: "Technical Director (Unreal)",
+        companyTR: "LucyRobot - Sanal Robotik Eğitim Simülatörü",
+        companyEN: "LucyRobot - Virtual Robotics Training Simulator",
+        descTR: "Projede gerçek zamanlı simülasyon mimarisini, arayüz sistemlerini, sinematik iş akışlarını ve animasyon sistemlerini tasarlayıp uygulayarak projenin geliştirme ekiplerine aktarımını sağladım.",
+        descEN: "Designed and implemented full real-time simulation architecture, UI systems, cinematic workflows, and animation systems. Delivered full production pipeline independently and transferred project to senior engineering team with structured documentation."
     },
     {
         id: "journey-2",
-        years: "2022 - 2024",
-        roleTR: "Teknik Animasyon Sorumlusu",
-        roleEN: "Technical Animator",
-        companyTR: "Oyun Stüdyoları",
-        companyEN: "Game Studios",
-        descTR: "Karakterlerin rig sistemlerini kurdum, animasyon döngüleri hazırladım. Unity ve Unreal Engine içerisinde animasyon geçiş ağaçlarını (Animator Controller) optimize ettim.",
-        descEN: "Built rigging systems for characters and crafted animation loops. Optimized state transitions and animation blend trees (Animator Controller) in Unity and Unreal Engine."
+        years: "2019 - 2024",
+        roleTR: "Teknik Direktör / Proje Lideri",
+        roleEN: "Technical Director / Project Lead",
+        companyTR: "Roco Game Studio",
+        companyEN: "Roco Game Studio",
+        descTR: "MMORPG üretimi için tüm animasyon ve rig mimarisini tasarladım. Ölçeklenebilir Unreal Engine locomotion sistemini kurdum, karakter rig standartlarını ve animasyon iş akışlarını belirledim.",
+        descEN: "Designed full animation and rigging architecture for MMORPG production. Built scalable Unreal locomotion system, established character rig standards, and animation workflows. Provided technical decision-making across UI, animation, shaders, and modeling."
     },
     {
         id: "journey-3",
-        years: "2020 - 2022",
-        roleTR: "3D Modelleme ve UV Sanatçısı",
-        roleEN: "3D Modeling & UV Artist",
-        companyTR: "Serbest Çalışan (Freelance)",
-        companyEN: "Freelance",
-        descTR: "Çeşitli indie oyun projeleri için hard-surface çevre modelleri ve karakter tasarımları yaptım. Temiz UV açılımı ve Substance Painter ile dokulandırma işlerini yürüttüm.",
-        descEN: "Created hard-surface environments and character designs for various indie game projects. Conducted clean UV mapping and texturing workflows using Substance Painter."
+        years: "2023 - 2024",
+        roleTR: "Rig ve Animasyon Mimarı",
+        roleEN: "Rigging & Animation Architect",
+        companyTR: "ZeroSpace (Serbest Çalışan)",
+        companyEN: "ZeroSpace (Freelance)",
+        descTR: "Üretim dostu karakter rig sistemleri tasarladım ve animasyon hattı (pipeline) yapısını kurdum.",
+        descEN: "Designed production-ready character rig systems and established animation pipeline structure."
     },
     {
         id: "journey-4",
-        years: "2016 - 2020",
-        roleTR: "Görsel Tasarım ve Animasyon Eğitimi",
-        roleEN: "Visual Design & Animation",
-        companyTR: "Güzel Sanatlar Akademisi",
-        companyEN: "Academy of Fine Arts",
-        descTR: "3D modelleme prensipleri, kemik sistemleri (rigging), anatomi, animasyonun 12 kuralı ve oyun motoru entegrasyonu üzerine akademik ve pratik eğitim aldım.",
-        descEN: "Received academic and practical training on 3D modeling principles, skeletal rigging systems, anatomy, the 12 rules of animation, and game engine deployment."
+        years: "2017 - 2019",
+        roleTR: "Etkileşimli Uygulama Geliştiricisi (Unity)",
+        roleEN: "Interactive Application Developer (Unity)",
+        companyTR: "Müze İnteraktif Projeleri (Sanal Gerçeklik / Artırılmış Gerçeklik)",
+        companyEN: "Museum Interactive Projects (VR/AR)",
+        descTR: "Sürükleyici gerçek zamanlı etkileşimli sistemler tasarladım. Kinect tabanlı etkileşim mimarisini uyguladım ve çok lokasyonlu kurumsal enstalasyonlar kurdum.",
+        descEN: "Designed immersive real-time interactive systems. Implemented Kinect-based interaction architecture and delivered multi-location institutional installations."
+    },
+    {
+        id: "journey-5",
+        years: "2010 - 2015",
+        roleTR: "İnteraktif Uygulama Geliştiricisi ve Animatör (Unity)",
+        roleEN: "Interactive Application Developer & Animator (Unity)",
+        companyTR: "Dijital Sahne Şirketi",
+        companyEN: "Dijital Sahne Company",
+        descTR: "Büyük ölçekli projeler için interaktif sistemler ve Kinect tabanlı uygulamalar geliştirdim, animasyon ve etkileşim kurgularını hazırladım.",
+        descEN: "Designed immersive real-time interactive systems. Implemented Kinect-based interaction architecture and delivered multi-location institutional installations."
     }
 ];
 
@@ -375,6 +385,11 @@ const db = {
         }
         if (!localStorage.getItem('journeyData')) {
             localStorage.setItem('journeyData', JSON.stringify(defaultJourney));
+        }
+        // Force upgrade database to load CV entries automatically
+        if (!localStorage.getItem('db_version_cv_updated_v3')) {
+            localStorage.setItem('journeyData', JSON.stringify(defaultJourney));
+            localStorage.setItem('db_version_cv_updated_v3', 'true');
         }
     },
 

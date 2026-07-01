@@ -105,12 +105,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const journeyModalCancel = document.getElementById('journey-modal-cancel');
     const addJourneyBtn = document.getElementById('add-journey-btn');
 
+    // Image Uploader elements
+    const imageUploadBox = document.getElementById('image-upload-box');
+    const imageFileInput = document.getElementById('asset-image-file');
+    const imageBase64Input = document.getElementById('asset-image-base64');
+    const imagePreviewContainer = document.getElementById('image-preview-container');
+    const imagePreview = document.getElementById('image-preview');
+    const removeImageBtn = document.getElementById('remove-image-btn');
+
     // Close Modals
     const closeAllModals = () => {
         assetModal.style.display = 'none';
         journeyModal.style.display = 'none';
         assetForm.reset();
         journeyForm.reset();
+        clearSelectedImage();
     };
 
     [assetModalClose, assetModalCancel, journeyModalClose, journeyModalCancel].forEach(btn => {
@@ -132,6 +141,108 @@ document.addEventListener('DOMContentLoaded', () => {
         journeyModalTitle.textContent = 'Yeni Kariyer Kaydı Ekle';
         journeyModal.style.display = 'flex';
     });
+
+    // Image Upload Bindings
+    if (imageUploadBox && imageFileInput) {
+        imageUploadBox.addEventListener('click', () => {
+            imageFileInput.click();
+        });
+
+        // Drag & Drop hover classes
+        ['dragenter', 'dragover'].forEach(eventName => {
+            imageUploadBox.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                imageUploadBox.classList.add('dragover');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            imageUploadBox.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                imageUploadBox.classList.remove('dragover');
+            }, false);
+        });
+
+        imageUploadBox.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files.length) {
+                handleImageFile(files[0]);
+            }
+        });
+
+        imageFileInput.addEventListener('change', () => {
+            if (imageFileInput.files.length) {
+                handleImageFile(imageFileInput.files[0]);
+            }
+        });
+
+        removeImageBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            clearSelectedImage();
+        });
+    }
+
+    function clearSelectedImage() {
+        if (imageFileInput) imageFileInput.value = '';
+        if (imageBase64Input) imageBase64Input.value = '';
+        if (imagePreview) imagePreview.src = '';
+        if (imagePreviewContainer) imagePreviewContainer.style.display = 'none';
+        if (imageUploadBox) imageUploadBox.style.display = 'flex';
+    }
+
+    function handleImageFile(file) {
+        if (!file.type.match('image.*')) {
+            alert('Lütfen geçerli bir görsel dosyası seçin (PNG, JPG, WebP)!');
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const rawBase64 = e.target.result;
+            // Compress image to fit within LocalStorage limits safely (max 800px, 0.7 quality)
+            compressImage(rawBase64, 800, 800, 0.7, (compressedBase64) => {
+                if (imageBase64Input) imageBase64Input.value = compressedBase64;
+                if (imagePreview) imagePreview.src = compressedBase64;
+                if (imagePreviewContainer) imagePreviewContainer.style.display = 'block';
+                if (imageUploadBox) imageUploadBox.style.display = 'none';
+            });
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // Client-side Image Compression using Canvas
+    function compressImage(base64Str, maxWidth, maxHeight, quality, callback) {
+        const img = new Image();
+        img.src = base64Str;
+        img.onload = function() {
+            let width = img.width;
+            let height = img.height;
+
+            if (width > height) {
+                if (width > maxWidth) {
+                    height *= maxWidth / width;
+                    width = maxWidth;
+                }
+            } else {
+                if (height > maxHeight) {
+                    width *= maxHeight / height;
+                    height = maxHeight;
+                }
+            }
+
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+
+            // Export to compressed JPEG Data URL
+            const compressed = canvas.toDataURL('image/jpeg', quality);
+            callback(compressed);
+        };
+    }
 
     // --------------------------------------------------
     // RENDER TABLES (READ)
@@ -222,7 +333,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('asset-slug-id').disabled = true; // cannot change id of existing asset
         document.getElementById('asset-category').value = asset.category;
         document.getElementById('asset-edition').value = asset.edition;
-        document.getElementById('asset-image').value = asset.image;
+        
+        if (asset.image) {
+            imageBase64Input.value = asset.image;
+            imagePreview.src = asset.image;
+            imagePreviewContainer.style.display = 'block';
+            imageUploadBox.style.display = 'none';
+        } else {
+            clearSelectedImage();
+        }
 
         document.getElementById('asset-desc-tr').value = asset.descTR;
         document.getElementById('asset-desc-en').value = asset.descEN;
@@ -338,7 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: document.getElementById('asset-title').value.trim(),
             edition: editionVal,
             tagClass: tagClass,
-            image: document.getElementById('asset-image').value.trim() || "assets/images/project_preview.png",
+            image: document.getElementById('asset-image-base64').value || "assets/images/project_preview.png",
             category: categoryVal,
             categoryTR: categoryTR,
             categoryEN: categoryEN,

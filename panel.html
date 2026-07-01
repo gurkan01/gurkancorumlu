@@ -189,8 +189,21 @@
                 </div>
 
                 <div class="admin-form-group">
-                    <label for="asset-image">Görsel Yolu (Image Path)</label>
-                    <input type="text" id="asset-image" class="admin-input" value="assets/images/project_preview.png">
+                    <label>Paket Görseli (Asset Image)</label>
+                    <div class="image-upload-drag-area" id="image-upload-box">
+                        <i class="fa-solid fa-cloud-arrow-up" style="font-size: 28px; margin-bottom: 10px; color: var(--accent-gold);"></i>
+                        <p class="tr-text" style="margin: 0; font-size: 13px;">Görseli buraya sürükleyin veya dosya seçmek için tıklayın</p>
+                        <p class="en-text" style="margin: 0; font-size: 13px;">Drag & drop image here or click to browse</p>
+                        <span style="font-size: 11px; color: var(--text-muted); margin-top: 5px;">Önerilen: 3:2 Oranında, JPG/PNG</span>
+                        <input type="file" id="asset-image-file" accept="image/*" style="display: none;">
+                        <input type="hidden" id="asset-image-base64" value="">
+                    </div>
+                    <div id="image-preview-container" style="display: none; margin-top: 15px; position: relative; border: 1px solid var(--border-color); padding: 8px;">
+                        <img id="image-preview" src="" style="width: 100%; max-height: 200px; object-fit: cover;">
+                        <button type="button" class="btn btn-card btn-action-delete" id="remove-image-btn" style="position: absolute; top: 15px; right: 15px; padding: 4px 8px; font-size: 11px; z-index: 10;">
+                            <i class="fa-solid fa-trash"></i> <span class="tr-text">Kaldır</span><span class="en-text">Remove</span>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="admin-form-section-title">AÇIKLAMA METİNLERİ / DESCRIPTIONS</div>

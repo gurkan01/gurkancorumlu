@@ -282,36 +282,87 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
+            const isEn = document.documentElement.classList.contains('lang-en');
+
+            // 1. Client-side Rate Limiter / Cooldown (Anti-Spam)
+            const lastSent = localStorage.getItem('contact_form_last_sent');
+            const now = Date.now();
+            const cooldownTime = 120000; // 2 minutes cooldown
+            if (lastSent && (now - lastSent) < cooldownTime) {
+                const secondsLeft = Math.ceil((cooldownTime - (now - lastSent)) / 1000);
+                const cooldownMsg = isEn 
+                    ? `Please wait ${secondsLeft} seconds before sending another message.`
+                    : `Lütfen yeni bir mesaj göndermek için ${secondsLeft} saniye bekleyin.`;
+                showNotification(cooldownMsg, 'warning');
+                return;
+            }
+
+            // 2. Honeypot check (Bot detection)
+            const honey = contactForm.querySelector('input[name="_honey"]').value;
+            if (honey) {
+                // Silently drop and mock success to fool bots
+                contactForm.reset();
+                showNotification(isEn ? 'Message sent!' : 'Mesajınız gönderildi!', 'success');
+                return;
+            }
+            
             // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
 
             // Simple visual loading state
             const submitBtn = contactForm.querySelector('.btn-submit');
             const originalBtnHTML = submitBtn.innerHTML;
-            
-            const isEn = document.documentElement.classList.contains('lang-en');
             
             submitBtn.disabled = true;
             submitBtn.innerHTML = isEn 
                 ? 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>'
                 : 'Gönderiliyor... <i class="fa-solid fa-spinner fa-spin"></i>';
 
-            // Simulate server request delay
-            setTimeout(() => {
-                // Success popup/notification
-                const successMsg = isEn 
-                    ? 'Your message has been sent successfully! I will get back to you as soon as possible.'
-                    : 'Mesajınız başarıyla gönderildi! En kısa zamanda geri döneceğim.';
-                showNotification(successMsg, 'success');
-                
-                // Reset form
-                contactForm.reset();
+            // 3. Make AJAX Post Request to FormSubmit.co
+            fetch("https://formsubmit.co/ajax/gcorum01@gmail.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    subject: subject,
+                    message: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success === "true" || data.success === true) {
+                    // Update rate limit timestamp
+                    localStorage.setItem('contact_form_last_sent', Date.now());
+                    
+                    const successMsg = isEn 
+                        ? 'Your message has been sent successfully! I will get back to you as soon as possible.'
+                        : 'Mesajınız başarıyla gönderildi! En kısa zamanda geri döneceğim.';
+                    showNotification(successMsg, 'success');
+                    
+                    // Reset form
+                    contactForm.reset();
+                } else {
+                    throw new Error(data.message || 'Error');
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                const errMsg = isEn 
+                    ? 'An error occurred while sending the message. Please try again later.'
+                    : 'Mesaj gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.';
+                showNotification(errMsg, 'error');
+            })
+            .finally(() => {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnHTML;
-            }, 1500);
+            });
         });
     }
 
@@ -319,10 +370,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const showNotification = (message, type) => {
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
+        
+        let iconClass = 'fa-circle-check';
+        let accentColor = 'var(--accent-gold)';
+        if (type === 'error') {
+            iconClass = 'fa-circle-exclamation';
+            accentColor = 'var(--accent-red)';
+        } else if (type === 'warning') {
+            iconClass = 'fa-triangle-exclamation';
+            accentColor = '#ff9f1c';
+        }
+
         notification.innerHTML = `
-            <div class="notification-content">
-                <i class="fa-solid fa-circle-check"></i>
-                <p>${message}</p>
+            <div class="notification-content" style="display:flex; align-items:center; gap:12px;">
+                <i class="fa-solid ${iconClass}" style="font-size:18px;"></i>
+                <p style="margin:0; line-height:1.4;">${message}</p>
             </div>
         `;
         
@@ -332,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bottom: '30px',
             right: '30px',
             backgroundColor: 'var(--bg-secondary)',
-            border: '1px solid var(--accent-gold)',
+            border: `1px solid ${accentColor}`,
             color: 'var(--text-primary)',
             padding: '16px 24px',
             zIndex: '1000',
@@ -347,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Icon styling
         setTimeout(() => {
             const icon = notification.querySelector('i');
-            if(icon) icon.style.color = 'var(--accent-gold)';
+            if(icon) icon.style.color = accentColor;
         }, 50);
 
         document.body.appendChild(notification);
@@ -365,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 notification.remove();
             }, 400);
-        }, 4000);
+        }, 5000); // 5 seconds display
     };
 
     // --------------------------------------------------
