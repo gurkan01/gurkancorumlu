@@ -9,7 +9,7 @@ const defaultAssets = [
         title: "OperatingLight Monster",
         edition: "MEDICAL WASTE SERIES",
         tagClass: "red",
-        image: "assets/images/project_preview.png",
+        image: "assets/images/operatinglight.jpg",
         category: "animation",
         categoryTR: "Rig & Animasyon",
         categoryEN: "Rig & Animation",
@@ -69,169 +69,70 @@ const defaultAssets = [
         ]
     },
     {
-        id: "medical-waste-monster-2",
-        title: "Medical Waste Monster - Vol. 2",
-        edition: "IN REVIEW",
-        tagClass: "gold",
-        image: "assets/images/project_preview.png",
+        id: "amputee-wheelchair-monster",
+        title: "Amputee Wheel Chair Monster",
+        edition: "MEDICAL WASTE SERIES",
+        tagClass: "red",
+        image: "assets/images/wheelchair.jpg",
         category: "animation",
         categoryTR: "Rig & Animasyon",
         categoryEN: "Rig & Animation",
-        descTR: "Tıbbi Atık Canavarları serisinin ikinci üyesi: İnceleme aşamasındaki yeni korku yaratığı paketi.",
-        descEN: "The second entry in the Medical Waste Monsters series: Upcoming horror creature pack currently in review.",
+        descTR: "Tıbbi Atık Canavarları serisinin ikinci üyesi: Tekerlekli sandalyeli, tamamen riglenmiş ve parçalanmaya hazır korku yaratığı karakteri.",
+        descEN: "The second entry in the Medical Waste Monsters series: A fully rigged, dismemberment-ready wheelchair-bound horror creature.",
         featuresTR: [
-            "Yüksek Kaliteli PBR Karakter Modeli",
-            "Tamamen Riglenmiş ve Oyun Motorlarına Uyumlu",
-            "Seriye Özel Korku Temalı Animasyon Seti",
-            "LOD Desteği ve Performans Optimizasyonu"
+            "Tekerlekli Sandalyeli Eşsiz Korku Canavarı Tasarımı",
+            "Parçalanmaya (Dismemberment) Hazır İskelet Yapısı (Skeletal Mesh)",
+            "Oyun İçi Kullanıma Hazır Korku Animasyonları Seti",
+            "PBR Malzemeler ve Detaylı LOD Seviyeleri"
         ],
         featuresEN: [
-            "High-quality PBR character model",
-            "Fully rigged and game-engine ready",
-            "Theme-specific horror animation cycles",
-            "LOD support and performance optimization"
+            "Unique wheelchair-bound horror creature design",
+            "Dismemberment-ready skeletal mesh structure",
+            "Ready-to-use horror animation cycles",
+            "PBR materials and detailed LOD configurations"
         ],
         specsTR: {
-            "Durum": "Unity Asset Store İnceleme Aşamasında",
-            "Kaplamalar (Textures)": "PBR 4K Kaplamalar",
-            "Formatlar": "FBX, Unitypackage, Blend"
+            "Poligon Sayısı": "Ortalama 18.000 Triangles",
+            "Kaplamalar (Textures)": "PBR 4K Kaplamalar (Albedo, Normal, Mask)",
+            "UV Düzeni": "Overlap edilmemiş temiz UV",
+            "Formatlar": "FBX, Unitypackage, Blend",
+            "Kemik Yapısı (Rig)": "Özel Tekerlekli Sandalye & Humanoid Rig Yapısı"
         },
         specsEN: {
-            "Status": "In Review on Unity Asset Store",
-            "Textures": "PBR 4K Textures",
-            "Formats": "FBX, Unitypackage, Blend"
+            "Poly Count": "Average 18,000 Triangles",
+            "Textures": "PBR 4K Textures (Albedo, Normal, Mask)",
+            "UV Layout": "Clean unwrapped UV mapping",
+            "Formats": "FBX, Unitypackage, Blend",
+            "Skeletal Rig": "Custom wheelchair & humanoid joint setup"
         },
         fabLink: "https://www.fab.com/portal/listings",
         unityLink: "https://assetstore.unity.com/preview/401864/1455644",
-        detailsTR: "Tıbbi Atık Canavarları (Medical Waste Monsters) serisinin ikinci bölümü. Şu anda Unity ve Fab mağazalarında yayın incelemesindedir. Çok yakında tüm detayları ve satış linkleri ile aktif olacaktır.",
-        detailsEN: "The second volume of the Medical Waste Monsters series. Currently in the review phase on Unity and Fab stores. Full specifications and active purchase links will be available soon.",
+        detailsTR: "Amputee Wheel Chair Monster, Tıbbi Atık Canavarları (Medical Waste Monsters) serisinin ikinci korkunç üyesidir. Tekerlekli sandalyesinde hareket eden bu canavar, oyuncular için son derece sıra dışı ve ürkütücü bir düşman dinamiği yaratır. Ameliyat izleri, paslanmış sandalye detayları ve yüksek çözünürlüklü kaplamaları ile hayatta kalma-korku oyunları için birebirdir. Dinamik parçalanma sistemleri ve ragdoll fizik yapılarıyla tam uyumludur.",
+        detailsEN: "The Amputee Wheel Chair Monster is the second terrifying member of the 'Medical Waste Monsters' series. Moving on a wheelchair, this creature creates an unusual and scary enemy dynamic for players. Featuring surgical scars, rusted wheelchair details, and high-resolution textures, it is perfect for survival horror games. Fully compatible with dynamic dismemberment and ragdoll physics setups.",
         animationsTR: [
-            "Çok Yakında Eklenecektir"
+            "Sandalyede İlerleme (Movement)",
+            "Saldırı Çeşitleri (Attacks)",
+            "Darbe Alma (Hit Reactions)",
+            "Ölüm ve Devrilme (Death & Roll-over)",
+            "Bekleme (Idle)"
         ],
         animationsEN: [
-            "To be added soon"
+            "Wheelchair movement cycles",
+            "Attack animations",
+            "Hit reactions",
+            "Death and rollover states",
+            "Idle animations"
         ]
     },
     {
-        id: "stylized-dragon",
-        title: "Stylized Dragon Set",
-        edition: "COMPLETE EDITION",
-        tagClass: "red",
-        image: "assets/images/project_preview.png",
-        category: "animation",
-        categoryTR: "Rig & Animasyon",
-        categoryEN: "Rig & Animation",
-        descTR: "Tamamen riglenmiş ve 18 adet hazır animasyona sahip (uçuş, saldırı, kükreme vb.) stylized ejderha karakter seti.",
-        descEN: "A stylized dragon character set, fully rigged with 18 ready-to-use animations (flight, combat, roar, etc.).",
-        featuresTR: [
-            "El Yapımı (Hand-painted) Kaplamalar",
-            "Komple Karakter Kemik Sistemi (Rig)",
-            "18 Adet Hazır Animasyon Seti",
-            "Unity Animator Controller Dahil"
-        ],
-        featuresEN: [
-            "Hand-Painted Stylized Textures",
-            "Complete Character Rig System",
-            "18 Ready Animation Cycles",
-            "Unity Animator Controller Included"
-        ],
-        specsTR: {
-            "Kemik Sayısı (Bones)": "52 Eklem (İleri seviye kanat ve kuyruk rigleri dahil)",
-            "Poligon Sayısı": "8500 Triangles (Oyun içi düşman ve binek optimizasyonlu)",
-            "Kaplamalar (Textures)": "Stylized Hand-painted Albedo, Emissive Map (2048x2048)",
-            "IK/FK Desteği": "Maya Control Rig dosyaları dahil",
-            "Animator Controller": "Hazır durum geçiş ağacı (Idle, Flight, Attack, Death)"
-        },
-        specsEN: {
-            "Bone Count": "52 Joints (Including advanced wing and tail rigs)",
-            "Poly Count": "8500 Triangles (Optimized for in-game enemies and mounts)",
-            "Textures": "Stylized Hand-painted Albedo, Emissive Map (2048x2048)",
-            "IK/FK Support": "Maya source files included",
-            "Animator Controller": "Ready state transition machine (Idle, Flight, Attack, Death)"
-        },
-        fabLink: "https://www.fab.com",
-        unityLink: "https://assetstore.unity.com",
-        detailsTR: "Bu paket, fantezi ve RPG oyunları için tasarlanmış el boyaması (hand-painted) kaplamalı stylized bir ejderha karakteridir. İleri düzey rig sistemi sayesinde kanat bükülmeleri, kuyruk dalgalanmaları ve çene kemikleri kusursuz şekilde hareket eder. Paketle birlikte gelen 18 adet el yapımı (keyframe) animasyon seti, ejderhanın tüm oyun içi ihtiyaçlarını karşılayacak çeşitliliktedir.",
-        detailsEN: "This pack features a hand-painted stylized dragon character designed for fantasy and RPG games. The advanced rigging system provides seamless wing bends, tail swings, and jaw movements. The package includes 18 handcrafted (keyframe) animation cycles, covering all in-game behaviors required for a complete creature setup.",
-        animationsTR: [
-            "Idle (Ayakta Bekleme)",
-            "Fly Idle (Havada Bekleme)",
-            "Walk (Yürüme)",
-            "Fly Forward (Uçuş)",
-            "Breathe Fire (Ateş Püskürme)",
-            "Breathe Fire Fly (Havada Ateş Püskürme)",
-            "Claw Attack (Pençe Saldırısı)",
-            "Tail Whip (Kuyruk Saldırısı)",
-            "Roar (Kükreme)",
-            "Take Damage (Hasar Alma)",
-            "Die (Ölüm)",
-            "Fly Die (Uçarken Düşme)"
-        ],
-        animationsEN: [
-            "Idle",
-            "Fly Idle",
-            "Walk",
-            "Fly Forward",
-            "Breathe Fire",
-            "Breathe Fire Fly",
-            "Claw Attack",
-            "Tail Whip",
-            "Roar",
-            "Take Damage",
-            "Die",
-            "Fly Die"
-        ]
-    },
-    {
-        id: "cyberpunk-props",
-        title: "Cyberpunk City Props",
-        edition: "STANDARD EDITION",
-        tagClass: "",
-        image: "assets/images/project_preview.png",
+        id: "magical-crystal-weapons",
+        title: "Magical Crystal Weapons",
+        edition: "DARK FANTASY EDITION",
+        tagClass: "blue",
+        image: "assets/images/weapons.jpg",
         category: "modeling",
         categoryTR: "Modelleme",
         categoryEN: "3D Modeling",
-        descTR: "Neon tabelalar, havalandırma üniteleri ve sokak bariyerleri içeren 25 parçalık Cyberpunk sokak dekorasyonu seti.",
-        descEN: "A 25-piece Cyberpunk street decoration set containing neon signs, ventilation units, and street barriers.",
-        featuresTR: [
-            "Emissive Neon Işıklı Dokular",
-            "Yıpranmış Metal PBR Dokuları",
-            "Modüler Sokak Elemanları",
-            "Collider ve Prefab Kurulumu Yapılmış"
-        ],
-        featuresEN: [
-            "Emissive Neon Glowing Textures",
-            "Weathered Metal PBR Textures",
-            "Modular Street Elements",
-            "Pre-configured Colliders & Prefabs"
-        ],
-        specsTR: {
-            "Parça Sayısı": "25 adet dekorasyon nesnesi",
-            "Poligon Aralığı": "500 - 2500 Triangles",
-            "Kaplamalar (Textures)": "PBR Albedo, Normal, Emissive, Roughness (2048x2048)",
-            "UV Düzeni": "Optimize edilmiş tek bir kanalda açılmış UV"
-        },
-        specsEN: {
-            "Asset Count": "25 decoration items",
-            "Poly Range": "500 - 2500 Triangles",
-            "Textures": "PBR Albedo, Normal, Emissive, Roughness (2048x2048)",
-            "UV Layout": "Optimized UV unwrapped in a single channel"
-        },
-        fabLink: "https://www.fab.com",
-        unityLink: "https://assetstore.unity.com",
-        detailsTR: "Cyberpunk fütüristik sokak ortamları tasarlamak için ideal olan bu paketteki tüm nesneler yüksek kaliteli yıpranma detayları ve neon ışıklandırmaları (emissive maps) ile donatılmıştır. Oyun sahnelerinizde performans dostu arka plan detayları oluşturmanızı sağlar.",
-        detailsEN: "Ideal for designing Cyberpunk futuristic street environments, all assets in this pack come equipped with high-quality weathering details and glowing neon lighting (emissive maps). It helps you build performance-friendly background details for your scenes.",
-        animationsTR: [],
-        animationsEN: []
-    },
-    {
-        id: "fantasy-warrior-rig",
-        title: "Fantasy Warrior Rig",
-        edition: "DELUXE EDITION",
-        tagClass: "gold",
-        image: "assets/images/project_preview.png",
-        category: "rigging",
-        categoryTR: "Rig & Animasyon",
         categoryEN: "Rig & Animation",
         descTR: "Zırh ve pelerin simülasyonları destekleyen, oyun motorlarıyla tam uyumlu profesyonel savaşçı karakter rig sistemi.",
         descEN: "A professional warrior character rig system supporting armor and cape simulations, fully compatible with game engines.",
@@ -265,78 +166,6 @@ const defaultAssets = [
         detailsEN: "Whether for sword combat or spellcasting animations, this rigging system ensures all humanoid actions deform flawlessly. The bones added for the cape and armor pieces allow you to implement cloth simulations compatible with physics engines.",
         animationsTR: [],
         animationsEN: []
-    },
-    {
-        id: "humanoid-anim-pack",
-        title: "Humanoid Animation Pack",
-        edition: "COMPLETE EDITION",
-        tagClass: "red",
-        image: "assets/images/project_preview.png",
-        category: "animation",
-        categoryTR: "Rig & Animasyon",
-        categoryEN: "Rig & Animation",
-        descTR: "Herhangi bir humanoid karaktere anında uygulayabileceğiniz 25 adet temel hareket ve dövüş animasyonu döngüsü.",
-        descEN: "25 essential movement and combat animation loops that can be applied to any humanoid character instantly.",
-        featuresTR: [
-            "Kök Hareket (Root Motion) Desteği",
-            "Kusursuz Başlangıç/Bitiş Döngüleri",
-            "Unity Mecanim Animator Kurulumu",
-            "FBX Kaynak Animasyon Dosyaları"
-        ],
-        featuresEN: [
-            "Root Motion Support Included",
-            "Seamless Start/End Loop Cycles",
-            "Unity Mecanim Animator Setup",
-            "FBX Source Animation Files"
-        ],
-        specsTR: {
-            "Animasyon Sayısı": "25 adet el yapımı animasyon",
-            "FPS Değeri": "60 FPS fırınlanmış veri",
-            "Root Motion": "Aktif / İnaktif sürümleri dahil",
-            "Dosya Formatları": "FBX, Unitypackage, Maya animasyon kaynakları"
-        },
-        specsEN: {
-            "Animations": "25 handcrafted animation files",
-            "Frame Rate": "60 FPS baked motion data",
-            "Root Motion": "Both Enabled / Disabled versions provided",
-            "File Formats": "FBX, Unitypackage, Maya source files"
-        },
-        fabLink: "https://www.fab.com",
-        unityLink: "https://assetstore.unity.com",
-        detailsTR: "Yürüme, koşma, zıplama, yuvarlanma, kılıç çekme, iki farklı kombo saldırısı ve ölüm gibi temel oyun mekaniklerini içeren bu paket, oyun prototiplerinizi veya bitmiş projelerinizi canlandırmak için en hızlı çözümdür.",
-        detailsEN: "Including core game mechanics such as walking, running, jumping, rolling, drawing sword, two combo attacks, and death, this package is the fastest solution to breathe life into your game prototypes or finished projects.",
-        animationsTR: [
-            "Locomotion Idle (Bekleme)",
-            "Run Forward (İleri Koşu)",
-            "Walk Forward (Yürüme)",
-            "Sprint (Hızlı Koşu)",
-            "Jump Start (Zıplama Başlangıç)",
-            "Jump Loop (Zıplama Havada)",
-            "Jump Land (Yere İniş)",
-            "Roll Forward (Takla)",
-            "Equip Sword (Kılıç Çekme)",
-            "Sword Idle (Kılıçlı Bekleme)",
-            "Slash Combo A (Kombo A)",
-            "Slash Combo B (Kombo B)",
-            "Get Hit (Darbe Alma)",
-            "Death (Ölüm)"
-        ],
-        animationsEN: [
-            "Locomotion Idle",
-            "Run Forward",
-            "Walk Forward",
-            "Sprint",
-            "Jump Start",
-            "Jump Loop",
-            "Jump Land",
-            "Roll Forward",
-            "Equip Sword",
-            "Sword Idle",
-            "Slash Combo A",
-            "Slash Combo B",
-            "Get Hit",
-            "Death"
-        ]
     }
 ];
 
@@ -411,10 +240,10 @@ const db = {
             localStorage.setItem('journeyData', JSON.stringify(defaultJourney));
             localStorage.setItem('db_version_cv_updated_v3', 'true');
         }
-        // Force upgrade database to load GCstudio real store assets automatically
-        if (!localStorage.getItem('db_version_real_assets_v4')) {
+        // Force upgrade database to load GCstudio only real assets v5
+        if (!localStorage.getItem('db_version_only_real_assets_v5')) {
             localStorage.setItem('assetsData', JSON.stringify(defaultAssets));
-            localStorage.setItem('db_version_real_assets_v4', 'true');
+            localStorage.setItem('db_version_only_real_assets_v5', 'true');
         }
     },
 
