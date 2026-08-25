@@ -73,7 +73,7 @@ const defaultAssets = [
         title: "Amputee Wheel Chair Monster",
         edition: "MEDICAL WASTE SERIES",
         tagClass: "red",
-        image: "assets/images/wheelchair.jpg",
+        image: "assets/images/whellchair.jpg",
         category: "animation",
         categoryTR: "Rig & Animasyon",
         categoryEN: "Rig & Animation",
