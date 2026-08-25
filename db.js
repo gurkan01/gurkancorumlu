@@ -5,92 +5,112 @@
 // Default Seed Data for Assets
 const defaultAssets = [
     {
-        id: "medieval-weapons",
-        title: "Medieval Weapons Pack",
-        edition: "STANDARD EDITION",
-        tagClass: "",
+        id: "operatinglight-monster",
+        title: "OperatingLight Monster",
+        edition: "MEDICAL WASTE SERIES",
+        tagClass: "red",
         image: "assets/images/project_preview.png",
-        category: "modeling",
-        categoryTR: "Modelleme",
-        categoryEN: "3D Modeling",
-        descTR: "Oyunlarınız için hazır, düşük poligonlu ve yüksek kaliteli PBR kaplamalara sahip 15 parçalık Orta Çağ silah seti.",
-        descEN: "A 15-piece medieval weapon set with low-poly optimization and high-quality PBR textures, ready for your games.",
+        category: "animation",
+        categoryTR: "Rig & Animasyon",
+        categoryEN: "Rig & Animation",
+        descTR: "Tıbbi Atık Canavarları serisinin ilk üyesi: Korku oyunlarınız için tasarlanmış, tamamen riglenmiş ve parçalanmaya hazır ameliyat ışığı kafalı yaratık.",
+        descEN: "The first entry in the Medical Waste Monsters series: A fully rigged, dismemberment-ready operating light headed creature designed for your horror games.",
         featuresTR: [
-            "Düşük Poligon (Low-Poly) Modeller",
-            "2K & 4K PBR Metalness Kaplamalar",
-            "Özel Collider ve Pivot Noktaları",
-            "Unity Prefab & URP Uyumlu"
+            "Parçalanmaya (Dismemberment) Hazır 8 Parçalı İskelet Yapısı",
+            "41 Adet AAA Seviye Animasyon Seti",
+            "Gelişmiş Işık Odaklı Savaş Mekanikleri",
+            "Özel Efektler (Kan Sıçraması, Melee İzleri) Dahil"
         ],
         featuresEN: [
-            "Low-Poly Mesh Geometry",
-            "2K & 4K PBR Metalness Textures",
-            "Custom Colliders & Pivot Points",
-            "Unity Prefab & URP Compatible"
+            "Dismemberment-ready 8-part skeletal mesh structure",
+            "41 AAA-grade animation cycles",
+            "Advanced light-based combat mechanics",
+            "Custom VFX (Blood splatters, melee trails) included"
         ],
         specsTR: {
-            "Poligon Sayısı": "Ort. Paket başı 1200 - 3500 Triangles",
-            "Kaplamalar (Textures)": "PBR Albedo, Normal, Metallic/Smoothness (2048x2048)",
-            "UV Düzeni": "Overlap Yapılmamış Temiz UV Map",
+            "Poligon Sayısı": "16.338 Triangles",
+            "Kaplamalar (Textures)": "PBR 4K Kaplamalar (Albedo, Normal, Mask)",
+            "UV Düzeni": "Temiz Overlap edilmemiş UV",
             "Formatlar": "FBX, Unitypackage, Blend",
-            "Collider Türü": "Özel Mesh Collider"
+            "Kemik Yapısı (Rig)": "Humanoid & Epic Skeleton Uyumlu"
         },
         specsEN: {
-            "Poly Count": "Avg. 1200 - 3500 Triangles per asset",
-            "Textures": "PBR Albedo, Normal, Metallic/Smoothness (2048x2048)",
-            "UV Layout": "Clean Unwrapped UV Map (No overlapping)",
+            "Poly Count": "16,338 Triangles",
+            "Textures": "PBR 4K Textures (Albedo, Normal, Mask)",
+            "UV Layout": "Clean unwrapped UV mapping",
             "Formats": "FBX, Unitypackage, Blend",
-            "Collider Type": "Custom Mesh Colliders"
+            "Skeletal Rig": "Humanoid & Epic Skeleton compatible"
         },
-        fabLink: "https://www.fab.com",
-        unityLink: "https://assetstore.unity.com",
-        detailsTR: "Bu paket, tarihi savaş ve RPG oyunlarında kullanılmak üzere tasarlanmış 15 adet tarihi Orta Çağ silahı içerir (Kılıçlar, baltalar, kalkanlar, mızraklar ve yaylar). Tüm nesneler oyun içi performansı maksimumda tutacak şekilde düşük poligon sayıları ve LOD seviyeleriyle optimize edilmiştir. Substance Painter yardımıyla üretilen PBR kaplamaları hem gerçekçi hem de stylized projelerde üst düzey duracak esnekliktedir.",
-        detailsEN: "This pack features 15 historical medieval weapons including swords, axes, shields, spears, and bows designed for historical combat and RPG games. All assets are optimized with low polygon counts and LOD support to maximize in-game performance. The PBR texture sets produced with Substance Painter provide the flexibility to look outstanding in both realistic and stylized projects.",
-        animationsTR: [],
-        animationsEN: []
+        fabLink: "https://www.fab.com/portal/listings",
+        unityLink: "https://assetstore.unity.com/packages/3d/characters/creatures/operatinglight-monster-medical-waste-series-389768",
+        detailsTR: "Bring pure, surgical terror to your horror games with the OperatingLight Monster, the chilling first entry in the 'Medical Waste Monsters' series. Bu yüksek kaliteli ve tamamen animasyonlu karakter, modern korku oyunları için tasarlanmıştır. Ameliyat ışığı kafası ve özel ışık saldırıları ile kurbanlarını kör edebilir veya yavaşlatabilir. 8 bağımsız vücut parçası sayesinde dinamik uzuv kopma (dismemberment) sistemleriyle tam uyumludur.",
+        detailsEN: "Bring pure, surgical terror to your horror games with the OperatingLight Monster, the chilling first entry in the 'Medical Waste Monsters' series. This high-quality, fully animated, and dismemberment-ready character is meticulously crafted for modern horror experiences, blending psychological dread with intense gameplay mechanics. Features a surgical light head capable of blinding, slowing, and draining the life force of victims.",
+        animationsTR: [
+            "Attack (Saldırı - 8 Çeşit)",
+            "Attack Ground (Yerde Saldırı - 8 Çeşit)",
+            "Attacked / Hit (Darbe Alma - 10 Çeşit)",
+            "Buff (Güçlenme - 2 Çeşit)",
+            "Dead (Ölüm - 2 Çeşit)",
+            "Down / Fall (Düşme - 2 Çeşit)",
+            "Movement Flying (Uçuş Hareketi - 8 Çeşit)",
+            "Movement Ground (Yerde Hareket - 17 Çeşit)",
+            "Stun (Sersemleme - 4 Çeşit)"
+        ],
+        animationsEN: [
+            "Attack (8 variants)",
+            "Attack Ground (8 variants)",
+            "Attacked / Hit (10 variants)",
+            "Buff (2 variants)",
+            "Dead (2 variants)",
+            "Down / Fall (2 variants)",
+            "Movement Flying (8 variants)",
+            "Movement Ground (17 variants)",
+            "Stun (4 variants)"
+        ]
     },
     {
-        id: "modular-scifi",
-        title: "Modular Sci-Fi Base Kit",
-        edition: "DELUXE EDITION",
+        id: "medical-waste-monster-2",
+        title: "Medical Waste Monster - Vol. 2",
+        edition: "IN REVIEW",
         tagClass: "gold",
         image: "assets/images/project_preview.png",
-        category: "modeling",
-        categoryTR: "Modelleme",
-        categoryEN: "3D Modeling",
-        descTR: "Snap-to-grid uyumlu parçalar ile kendi bilim kurgu üslerinizi ve koridorlarınızı tasarlayabileceğiniz modüler çevre paketi.",
-        descEN: "A modular environment pack allowing you to design your own sci-fi bases and corridors with snap-to-grid compatible parts.",
+        category: "animation",
+        categoryTR: "Rig & Animasyon",
+        categoryEN: "Rig & Animation",
+        descTR: "Tıbbi Atık Canavarları serisinin ikinci üyesi: İnceleme aşamasındaki yeni korku yaratığı paketi.",
+        descEN: "The second entry in the Medical Waste Monsters series: Upcoming horror creature pack currently in review.",
         featuresTR: [
-            "Snap-to-Grid Uyumlu Mesh Yapısı",
-            "Yüksek Detaylı UV Düzenleri",
-            "LOD (Level of Detail) Desteği",
-            "Unity URP/HDRP & Unreal Engine Hazır"
+            "Yüksek Kaliteli PBR Karakter Modeli",
+            "Tamamen Riglenmiş ve Oyun Motorlarına Uyumlu",
+            "Seriye Özel Korku Temalı Animasyon Seti",
+            "LOD Desteği ve Performans Optimizasyonu"
         ],
         featuresEN: [
-            "Snap-to-Grid Mesh Layout",
-            "High-Detail UV Configurations",
-            "LOD (Level of Detail) Support",
-            "Unity URP/HDRP & Unreal Engine Ready"
+            "High-quality PBR character model",
+            "Fully rigged and game-engine ready",
+            "Theme-specific horror animation cycles",
+            "LOD support and performance optimization"
         ],
         specsTR: {
-            "Modüler Parça Sayısı": "45 adet (Duvarlar, tavanlar, zeminler, kapılar, sütunlar)",
-            "Kaplamalar (Textures)": "PBR Channel Packed (Albedo, Normal, Mask (Metallic, AO, Smoothness)) (4096x4096)",
-            "UV Düzeni": "Dikişsiz Modüler UV Atlasing",
-            "LOD Seviyeleri": "LOD0, LOD1, LOD2 entegreli",
-            "Oyun Motoru": "Unity & Unreal Engine için hazır prefabs"
+            "Durum": "Unity Asset Store İnceleme Aşamasında",
+            "Kaplamalar (Textures)": "PBR 4K Kaplamalar",
+            "Formatlar": "FBX, Unitypackage, Blend"
         },
         specsEN: {
-            "Modular Parts": "45 pieces (Walls, ceilings, floors, doors, pillars)",
-            "Textures": "PBR Channel Packed (Albedo, Normal, Mask (Metallic, AO, Smoothness)) (4096x4096)",
-            "UV Layout": "Seamless Modular UV Atlasing",
-            "LOD Levels": "LOD0, LOD1, LOD2 integrated",
-            "Engine Support": "Ready prefabs for Unity & Unreal Engine"
+            "Status": "In Review on Unity Asset Store",
+            "Textures": "PBR 4K Textures",
+            "Formats": "FBX, Unitypackage, Blend"
         },
-        fabLink: "https://www.fab.com",
-        unityLink: "https://assetstore.unity.com",
-        detailsTR: "Modular Sci-Fi Base Kit, iç mekân uzay istasyonları, bilim kurgu laboratuvarları ve fütüristik sığınaklar oluşturmak için eksiksiz bir mimari kittir. Grid sistemine tam oturan (snap-to-grid) tasarımı sayesinde dakikalar içinde benzersiz haritalar tasarlayabilirsiniz. Malzemeler, draw call sayısını minimize edecek şekilde tek bir atlas üzerinden okunur, bu da mobil ve VR projelerinde bile mükemmel performans sunar.",
-        detailsEN: "The Modular Sci-Fi Base Kit is a complete architectural set for creating interior space stations, sci-fi labs, and futuristic bunkers. With its design snapping perfectly to the grid, you can assemble unique maps in minutes. Materials read from a single atlas to minimize draw calls, providing excellent performance even in mobile and VR projects.",
-        animationsTR: [],
-        animationsEN: []
+        fabLink: "https://www.fab.com/portal/listings",
+        unityLink: "https://assetstore.unity.com/preview/401864/1455644",
+        detailsTR: "Tıbbi Atık Canavarları (Medical Waste Monsters) serisinin ikinci bölümü. Şu anda Unity ve Fab mağazalarında yayın incelemesindedir. Çok yakında tüm detayları ve satış linkleri ile aktif olacaktır.",
+        detailsEN: "The second volume of the Medical Waste Monsters series. Currently in the review phase on Unity and Fab stores. Full specifications and active purchase links will be available soon.",
+        animationsTR: [
+            "Çok Yakında Eklenecektir"
+        ],
+        animationsEN: [
+            "To be added soon"
+        ]
     },
     {
         id: "stylized-dragon",
@@ -390,6 +410,11 @@ const db = {
         if (!localStorage.getItem('db_version_cv_updated_v3')) {
             localStorage.setItem('journeyData', JSON.stringify(defaultJourney));
             localStorage.setItem('db_version_cv_updated_v3', 'true');
+        }
+        // Force upgrade database to load GCstudio real store assets automatically
+        if (!localStorage.getItem('db_version_real_assets_v4')) {
+            localStorage.setItem('assetsData', JSON.stringify(defaultAssets));
+            localStorage.setItem('db_version_real_assets_v4', 'true');
         }
     },
 
