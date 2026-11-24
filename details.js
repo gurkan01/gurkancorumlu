@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Lookup the asset in our assetsData array
-    const asset = assetsData.find(a => a.id === assetId);
+    const asset = (window.assetsData || []).find(a => a.id === assetId);
 
     // Redirect if asset doesn't exist
     if (!asset) {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 1. UPDATE BASICS
-    document.title = `${asset.title} | Gürkan Çorumlu Details`;
+    document.title = `${asset.title} | Gürkan Çorumlu`;
     
     const titleElement = document.getElementById('details-title');
     titleElement.textContent = asset.title;
@@ -41,10 +41,36 @@ document.addEventListener('DOMContentLoaded', () => {
         editionTag.classList.add(asset.tagClass);
     }
 
-    // Main Image
+    // Main Image + gallery thumbnails
     const mainImg = document.getElementById('details-image');
     mainImg.src = asset.image;
     mainImg.alt = asset.title;
+
+    const galleryEl = document.getElementById('details-gallery');
+    const images = [asset.image, ...(asset.gallery || [])].filter(Boolean);
+    if (galleryEl && images.length > 1) {
+        images.forEach((src, i) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = `gallery-thumb ${i === 0 ? 'active' : ''}`;
+            btn.setAttribute('aria-label', `${asset.title} - ${i + 1}`);
+            btn.innerHTML = `<img src="${src}" alt="" loading="lazy">`;
+            btn.addEventListener('click', () => {
+                mainImg.src = src;
+                galleryEl.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+                btn.classList.add('active');
+            });
+            galleryEl.appendChild(btn);
+        });
+    } else if (galleryEl) {
+        galleryEl.style.display = 'none';
+    }
+
+    // Engines
+    const enginesEl = document.getElementById('details-engines');
+    if (enginesEl && asset.engines && asset.engines.length) {
+        enginesEl.innerHTML = asset.engines.map(e => `<span class="engine-chip">${e}</span>`).join('');
+    }
 
     // Category Badge
     const categoryBadge = document.getElementById('details-category-badge');
@@ -115,6 +141,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const fabLink = document.getElementById('details-fab-link');
     const unityLink = document.getElementById('details-unity-link');
 
-    fabLink.href = asset.fabLink || '#';
-    unityLink.href = asset.unityLink || '#';
+    if (asset.fabLink) { fabLink.href = asset.fabLink; } else { fabLink.style.display = 'none'; }
+    if (asset.unityLink) { unityLink.href = asset.unityLink; } else { unityLink.style.display = 'none'; }
+
+    const videoLink = document.getElementById('details-video-link');
+    if (videoLink && asset.videoLink) {
+        videoLink.href = asset.videoLink;
+        videoLink.style.display = 'block';
+    }
 });

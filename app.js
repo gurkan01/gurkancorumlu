@@ -2,6 +2,51 @@
    GÜRKAN ÇORUMLU PORTFOLIO JAVASCRIPT
    ========================================================================== */
 
+// --------------------------------------------------
+// SHARED ASSET CARD RENDERER (home + assets page)
+// --------------------------------------------------
+function createAssetCard(asset) {
+    const card = document.createElement('div');
+    card.className = `project-card ${asset.tagClass === 'gold' ? 'featured' : ''}`;
+    card.setAttribute('data-id', asset.id);
+    const stores = [
+        asset.fabLink ? '<span class="store-pill fab">Fab</span>' : '',
+        asset.unityLink ? '<span class="store-pill unity"><i class="fa-brands fa-unity"></i> Unity</span>' : ''
+    ].join('');
+    card.innerHTML = `
+        <div class="project-edition-tag ${asset.tagClass || ''}">${asset.edition}</div>
+        <div class="project-img-container">
+            <img src="${asset.image}" alt="${asset.title}" class="project-img" loading="lazy">
+            <div class="project-overlay"></div>
+            <div class="store-pills">${stores}</div>
+        </div>
+        <div class="project-body">
+            <h3 class="project-title">${asset.title}</h3>
+            <p class="project-desc tr-text">${asset.descTR}</p>
+            <p class="project-desc en-text">${asset.descEN}</p>
+            <ul class="project-features tr-text">
+                ${asset.featuresTR.map(f => `<li><i class="fa-solid fa-circle-chevron-right"></i> ${f}</li>`).join('')}
+            </ul>
+            <ul class="project-features en-text">
+                ${asset.featuresEN.map(f => `<li><i class="fa-solid fa-circle-chevron-right"></i> ${f}</li>`).join('')}
+            </ul>
+            <div class="project-footer">
+                <span class="project-status tr-text">${asset.categoryTR.toLocaleUpperCase('tr-TR')}</span>
+                <span class="project-status en-text">${asset.categoryEN.toUpperCase()}</span>
+                <a href="details.html?id=${asset.id}" class="btn btn-card ${asset.tagClass === 'gold' ? 'gold-btn' : ''} tr-text">Detayları Gör <i class="fa-solid fa-angle-right"></i></a>
+                <a href="details.html?id=${asset.id}" class="btn btn-card ${asset.tagClass === 'gold' ? 'gold-btn' : ''} en-text">View Details <i class="fa-solid fa-angle-right"></i></a>
+            </div>
+        </div>
+    `;
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', (e) => {
+        if (e.target.closest('a')) return;
+        window.location.href = `details.html?id=${asset.id}`;
+    });
+    return card;
+}
+window.createAssetCard = createAssetCard;
+
 document.addEventListener('DOMContentLoaded', () => {
     
     // --------------------------------------------------
@@ -50,38 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const homeJourneyTrack = document.getElementById('home-journey-track');
 
     if (homeProjectsGrid && window.db) {
-        const assets = window.db.getAssets().slice(0, 3); // show top 3 on homepage
+        const assets = window.db.getAssets().slice(0, 6); // featured packs on homepage
         homeProjectsGrid.innerHTML = '';
-        assets.forEach(asset => {
-            const card = document.createElement('div');
-            card.className = `project-card ${asset.tagClass === 'gold' ? 'featured' : ''}`;
-            card.setAttribute('data-id', asset.id);
-            card.innerHTML = `
-                <div class="project-edition-tag ${asset.tagClass}">${asset.edition}</div>
-                <div class="project-img-container">
-                    <img src="${asset.image}" alt="${asset.title}" class="project-img">
-                    <div class="project-overlay"></div>
-                </div>
-                <div class="project-body">
-                    <h3 class="project-title">${asset.title}</h3>
-                    <p class="project-desc tr-text">${asset.descTR}</p>
-                    <p class="project-desc en-text">${asset.descEN}</p>
-                    <ul class="project-features tr-text">
-                        ${asset.featuresTR.map(f => `<li><i class="fa-solid fa-circle-chevron-right"></i> ${f}</li>`).join('')}
-                    </ul>
-                    <ul class="project-features en-text">
-                        ${asset.featuresEN.map(f => `<li><i class="fa-solid fa-circle-chevron-right"></i> ${f}</li>`).join('')}
-                    </ul>
-                    <div class="project-footer">
-                        <span class="project-status tr-text">${asset.categoryTR.toUpperCase()}</span>
-                        <span class="project-status en-text">${asset.categoryEN.toUpperCase()}</span>
-                        <a href="details.html?id=${asset.id}" class="btn btn-card ${asset.tagClass === 'gold' ? 'gold-btn' : ''} tr-text">Detayları Gör <i class="fa-solid fa-angle-right"></i></a>
-                        <a href="details.html?id=${asset.id}" class="btn btn-card ${asset.tagClass === 'gold' ? 'gold-btn' : ''} en-text">View Details <i class="fa-solid fa-angle-right"></i></a>
-                    </div>
-                </div>
-            `;
-            homeProjectsGrid.appendChild(card);
-        });
+        assets.forEach(asset => homeProjectsGrid.appendChild(createAssetCard(asset)));
     }
 
     if (homeJourneyTrack && window.db) {
@@ -212,66 +228,68 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.querySelector('.journey-btn.prev');
     const nextBtn = document.querySelector('.journey-btn.next');
     
-    let currentIndex = 0;
+    if (track && prevBtn && nextBtn && cards.length) {
+        let currentIndex = 0;
 
-    const getCardsPerView = () => {
-        if (window.innerWidth <= 768) return 1;
-        if (window.innerWidth <= 1024) return 2;
-        return 3;
-    };
+        const getCardsPerView = () => {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1024) return 2;
+            return 3;
+        };
 
-    const updateSlider = () => {
-        const cardsPerView = getCardsPerView();
-        const maxIndex = Math.max(0, cards.length - cardsPerView);
+        const updateSlider = () => {
+            const cardsPerView = getCardsPerView();
+            const maxIndex = Math.max(0, cards.length - cardsPerView);
         
-        // Clamp index
-        if (currentIndex > maxIndex) currentIndex = maxIndex;
-        if (currentIndex < 0) currentIndex = 0;
+            // Clamp index
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            if (currentIndex < 0) currentIndex = 0;
 
-        // Calculate card width + gap (24px gap defined in CSS)
-        const cardWidth = cards[0].getBoundingClientRect().width;
-        const offset = currentIndex * (cardWidth + 24);
+            // Calculate card width + gap (24px gap defined in CSS)
+            const cardWidth = cards[0].getBoundingClientRect().width;
+            const offset = currentIndex * (cardWidth + 24);
         
-        track.style.transform = `translateX(-${offset}px)`;
+            track.style.transform = `translateX(-${offset}px)`;
 
-        // Highlight active cards in view
-        cards.forEach((card, index) => {
-            card.classList.remove('active');
-            if (index >= currentIndex && index < currentIndex + cardsPerView) {
-                if (index === currentIndex) {
-                    card.classList.add('active'); // highlight the primary visible item
+            // Highlight active cards in view
+            cards.forEach((card, index) => {
+                card.classList.remove('active');
+                if (index >= currentIndex && index < currentIndex + cardsPerView) {
+                    if (index === currentIndex) {
+                        card.classList.add('active'); // highlight the primary visible item
+                    }
                 }
+            });
+
+            // Disable buttons if at boundaries
+            prevBtn.style.opacity = currentIndex === 0 ? '0.4' : '1';
+            prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+        
+            nextBtn.style.opacity = currentIndex === maxIndex ? '0.4' : '1';
+            nextBtn.style.pointerEvents = currentIndex === maxIndex ? 'none' : 'auto';
+        };
+
+        nextBtn.addEventListener('click', () => {
+            const cardsPerView = getCardsPerView();
+            if (currentIndex < cards.length - cardsPerView) {
+                currentIndex++;
+                updateSlider();
             }
         });
 
-        // Disable buttons if at boundaries
-        prevBtn.style.opacity = currentIndex === 0 ? '0.4' : '1';
-        prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
-        
-        nextBtn.style.opacity = currentIndex === maxIndex ? '0.4' : '1';
-        nextBtn.style.pointerEvents = currentIndex === maxIndex ? 'none' : 'auto';
-    };
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        });
 
-    nextBtn.addEventListener('click', () => {
-        const cardsPerView = getCardsPerView();
-        if (currentIndex < cards.length - cardsPerView) {
-            currentIndex++;
-            updateSlider();
-        }
-    });
-
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateSlider();
-        }
-    });
-
-    // Recalculate slider on resize
-    window.addEventListener('resize', updateSlider);
+        // Recalculate slider on resize
+        window.addEventListener('resize', updateSlider);
     
-    // Initial call
-    setTimeout(updateSlider, 200);
+        // Initial call
+        setTimeout(updateSlider, 200);
+    }
 
     // --------------------------------------------------
     // 5. CONTACT FORM SUBMISSION
@@ -429,23 +447,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 400);
         }, 5000); // 5 seconds display
     };
-
-    // --------------------------------------------------
-    // 5.5 CLICKABLE PROJECT CARDS
-    // --------------------------------------------------
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-        card.style.cursor = 'pointer';
-        card.addEventListener('click', (e) => {
-            if (e.target.closest('a')) {
-                return;
-            }
-            const assetId = card.getAttribute('data-id');
-            if (assetId) {
-                window.location.href = `details.html?id=${assetId}`;
-            }
-        });
-    });
 
     // --------------------------------------------------
     // 6. CANVAS FOG AND SNOW ANIMATION

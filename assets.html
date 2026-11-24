@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gürkan Çorumlu - Tüm 3D Varlık Paketleri. Fab ve Unity Asset Store için optimize edilmiş 3D Modeller ve Animasyonlar.">
+    <meta name="description" content="Gürkan Çorumlu - Fab ve Unity Asset Store paketleri: animasyonlu 3D karakterler, silahlar, Niagara VFX, toon materyaller ve dinamik hava sistemleri.">
     <meta name="author" content="Gürkan Çorumlu">
     <title>Tüm Paketler | Gürkan Çorumlu 3D Portfolio</title>
     
@@ -110,23 +110,35 @@
                 <div class="section-divider"></div>
             </div>
 
+            <!-- Store links -->
+            <div class="store-links-row">
+                <a href="https://www.fab.com/sellers/Gcorum" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <span class="tr-text">Fab Mağazam <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                    <span class="en-text">My Fab Store <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                </a>
+                <a href="https://assetstore.unity.com/publishers/150432" target="_blank" rel="noopener noreferrer" class="btn btn-outline gold-btn">
+                    <span class="tr-text">Unity Asset Store <i class="fa-brands fa-unity"></i></span>
+                    <span class="en-text">Unity Asset Store <i class="fa-brands fa-unity"></i></span>
+                </a>
+            </div>
+
             <!-- Filters -->
             <div class="assets-filters-container">
                 <button class="filter-btn active" data-filter="all">
                     <span class="tr-text">HEPSİ</span>
                     <span class="en-text">ALL</span>
                 </button>
-                <button class="filter-btn" data-filter="modeling">
-                    <span class="tr-text">MODELLEME / UV</span>
-                    <span class="en-text">MODELING & UV</span>
+                <button class="filter-btn" data-filter="models">
+                    <span class="tr-text">3D MODEL & ANİMASYON</span>
+                    <span class="en-text">3D MODELS & ANIMATION</span>
                 </button>
-                <button class="filter-btn" data-filter="rigging">
-                    <span class="tr-text">RİG & SKİN</span>
-                    <span class="en-text">RIG & SKIN</span>
+                <button class="filter-btn" data-filter="vfx">
+                    <span class="tr-text">NIAGARA VFX</span>
+                    <span class="en-text">NIAGARA VFX</span>
                 </button>
-                <button class="filter-btn" data-filter="animation">
-                    <span class="tr-text">ANİMASYON</span>
-                    <span class="en-text">ANIMATION</span>
+                <button class="filter-btn" data-filter="systems">
+                    <span class="tr-text">MATERYAL & SİSTEMLER</span>
+                    <span class="en-text">MATERIALS & SYSTEMS</span>
                 </button>
             </div>
 
@@ -171,63 +183,19 @@
             const renderAssets = (categoryFilter = 'all') => {
                 gridContainer.innerHTML = '';
                 
-                // If filter is rigging, we will search for category === 'rigging', if animation then 'animation'
                 const filtered = categoryFilter === 'all'
                     ? assetsData
                     : assetsData.filter(a => a.category === categoryFilter);
 
                 if (filtered.length === 0) {
                     gridContainer.innerHTML = `
-                        <div class="no-assets tr-text" style="grid-column: span 3; text-align: center; color: var(--text-muted); padding: 40px 0;">Bu kategoride henüz varlık bulunmamaktadır.</div>
-                        <div class="no-assets en-text" style="grid-column: span 3; text-align: center; color: var(--text-muted); padding: 40px 0;">No assets found in this category yet.</div>
+                        <div class="no-assets tr-text" style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 40px 0;">Bu kategoride henüz varlık bulunmamaktadır.</div>
+                        <div class="no-assets en-text" style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 40px 0;">No assets found in this category yet.</div>
                     `;
                     return;
                 }
 
-                filtered.forEach(asset => {
-                    const card = document.createElement('div');
-                    card.className = `project-card ${asset.tagClass === 'gold' ? 'featured' : ''}`;
-                    card.setAttribute('data-id', asset.id);
-
-                    card.innerHTML = `
-                        <div class="project-edition-tag ${asset.tagClass}">${asset.edition}</div>
-                        <div class="project-img-container">
-                            <img src="${asset.image}" alt="${asset.title}" class="project-img">
-                            <div class="project-overlay"></div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">${asset.title}</h3>
-                            <p class="project-desc tr-text">${asset.descTR}</p>
-                            <p class="project-desc en-text">${asset.descEN}</p>
-                            <ul class="project-features tr-text">
-                                ${asset.featuresTR.map(f => `<li><i class="fa-solid fa-circle-chevron-right"></i> ${f}</li>`).join('')}
-                            </ul>
-                            <ul class="project-features en-text">
-                                ${asset.featuresEN.map(f => `<li><i class="fa-solid fa-circle-chevron-right"></i> ${f}</li>`).join('')}
-                            </ul>
-                            <div class="project-footer">
-                                <span class="project-status tr-text">${asset.categoryTR.toUpperCase()}</span>
-                                <span class="project-status en-text">${asset.categoryEN.toUpperCase()}</span>
-                                <a href="details.html?id=${asset.id}" class="btn btn-card ${asset.tagClass === 'gold' ? 'gold-btn' : ''} tr-text">Detayları Gör <i class="fa-solid fa-angle-right"></i></a>
-                                <a href="details.html?id=${asset.id}" class="btn btn-card ${asset.tagClass === 'gold' ? 'gold-btn' : ''} en-text">View Details <i class="fa-solid fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    `;
-                    gridContainer.appendChild(card);
-                });
-
-                // Attach click handlers to newly created cards
-                const cards = gridContainer.querySelectorAll('.project-card');
-                cards.forEach(card => {
-                    card.style.cursor = 'pointer';
-                    card.addEventListener('click', (e) => {
-                        if (e.target.closest('a')) return;
-                        const assetId = card.getAttribute('data-id');
-                        if (assetId) {
-                            window.location.href = `details.html?id=${assetId}`;
-                        }
-                    });
-                });
+                filtered.forEach(asset => gridContainer.appendChild(createAssetCard(asset)));
             };
 
             // Filter button event listeners

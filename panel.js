@@ -407,15 +407,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const id = document.getElementById('asset-slug-id').value.trim();
         
         const categoryVal = document.getElementById('asset-category').value;
-        let categoryTR = "Modelleme";
-        let categoryEN = "3D Modeling";
-        if (categoryVal === 'rigging') {
-            categoryTR = "Rigleme";
-            categoryEN = "Rigging";
-        } else if (categoryVal === 'animation') {
-            categoryTR = "Rig & Animasyon";
-            categoryEN = "Rig & Animation";
-        }
+        const categoryNames = {
+            models: ["3D Model & Animasyon", "3D Model & Animation"],
+            vfx: ["Niagara VFX", "Niagara VFX"],
+            systems: ["Materyal & Sistemler", "Materials & Systems"]
+        };
+        const [categoryTR, categoryEN] = categoryNames[categoryVal] || categoryNames.models;
 
         const tagClassMapping = {
             "STANDARD EDITION": "",
